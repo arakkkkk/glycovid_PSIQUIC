@@ -1,4 +1,3 @@
-from log.log import init_log, log
 from datetime import datetime
 import shutil
 import os
@@ -70,7 +69,6 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
     except:
         pass
 
-    init_log("query_" + service_name)
     psicquicUrl = (
         psicquicRestUrl
         + "query/"
@@ -82,7 +80,7 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
         + "&format=count"
     )
     max_count = str(readURL(psicquicUrl)).split("'")[1].split("'")[0]
-    for i in range(100):
+    for i in range(10, 20):
         filename = dirname + "/" + service_name + str(i) + ".tsv"
         if glob(filename):
             offset += 100000
@@ -135,7 +133,6 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
                 + str(int(int(maxResults) / int(max_count) * 100))
                 + "%"
             )
-            log("query_" + service_name, print_text)
             print(print_text)
             psicquicResultLines = readURL(psicquicUrl).splitlines()
 
@@ -153,7 +150,6 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
 
             offset += 10000
             maxResults += 10000
-    os.remove("log/query_" + service_name + ".txt")
 
 
 def main(query):
@@ -168,13 +164,13 @@ def main(query):
         # "IMEx",
         # "mentha",
         # "MPIDB",
-        # "iRefIndex",
-        "MatrixDB",
-        "MINT",
-        "Reactome",
-        "Reactome-FIs",
-        "EBI-GOA-miRNA",
-        "UniProt",
+        "iRefIndex",
+        # "MatrixDB",
+        # "MINT",
+        # "Reactome",
+        # "Reactome-FIs",
+        # "EBI-GOA-miRNA",
+        # "UniProt",
         # "MBInfo",
         # "BindingDB",
         # "VirHostNet",
@@ -190,7 +186,7 @@ def main(query):
 
     for service in services:
         if service.name in services_list:
-            queryPsicquic(service.name, service.restUrl, query, 1, 10000, False)
+            queryPsicquic(service.name, service.restUrl, query, 1000000, 1100000, False)
 
 
 if __name__ == "__main__":

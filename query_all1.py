@@ -1,4 +1,3 @@
-from log.log import init_log, log
 from datetime import datetime
 import shutil
 import os
@@ -70,7 +69,6 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
     except:
         pass
 
-    init_log("query_" + service_name)
     psicquicUrl = (
         psicquicRestUrl
         + "query/"
@@ -82,7 +80,7 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
         + "&format=count"
     )
     max_count = str(readURL(psicquicUrl)).split("'")[1].split("'")[0]
-    for i in range(100):
+    for i in range(0, 10):
         filename = dirname + "/" + service_name + str(i) + ".tsv"
         if glob(filename):
             offset += 100000
@@ -135,7 +133,6 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
                 + str(int(int(maxResults) / int(max_count) * 100))
                 + "%"
             )
-            log("query_" + service_name, print_text)
             print(print_text)
             psicquicResultLines = readURL(psicquicUrl).splitlines()
 
@@ -153,7 +150,6 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
 
             offset += 10000
             maxResults += 10000
-    os.remove("log/query_" + service_name + ".txt")
 
 
 def main(query):

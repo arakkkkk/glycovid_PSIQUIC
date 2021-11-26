@@ -80,7 +80,7 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
         + "&format=count"
     )
     max_count = str(readURL(psicquicUrl)).split("'")[1].split("'")[0]
-    for i in range(20,30):
+    for i in range(30,40):
         filename = dirname + "/" + service_name + str(i) + ".tsv"
         if glob(filename):
             offset += 100000
@@ -186,7 +186,7 @@ def main(query):
 
     for service in services:
         if service.name in services_list:
-            queryPsicquic(service.name, service.restUrl, query, 2000000, 2100000, False)
+            queryPsicquic(service.name, service.restUrl, query, 3000000, 3100000, False)
 
 
 if __name__ == "__main__":
