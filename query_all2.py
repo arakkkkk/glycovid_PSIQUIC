@@ -1,8 +1,11 @@
-from urllib.request import urlopen
-from glob import glob
-import xml.etree.ElementTree as ET
-import os
+from log.log import init_log, log
+from datetime import datetime
 import shutil
+import os
+import xml.etree.ElementTree as ET
+from glob import glob
+from urllib.request import urlopen
+
 
 # ------------------ FUNCTIONS ------------------
 
@@ -51,6 +54,11 @@ def readActiveServicesFromRegistry():
 
 
 def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init):
+    interactiontype_except_list = [
+        'psi-mi:"MI:0217"(phosphorylation reaction)',
+        'psi-mi:"MI:0203"(dephosphorylation reaction)',
+        'psi-mi:"MI:1110"(predicted interaction)',
+    ]
     dirname = "data/" + service_name
     if init:
         try:
@@ -62,6 +70,18 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
     except:
         pass
 
+    init_log("query_" + service_name)
+    psicquicUrl = (
+        psicquicRestUrl
+        + "query/"
+        + query
+        + "?firstResult="
+        + str(offset)
+        + "&maxResults="
+        + str(maxResults)
+        + "&format=count"
+    )
+    max_count = str(readURL(psicquicUrl)).split("'")[1].split("'")[0]
     for i in range(100):
         filename = dirname + "/" + service_name + str(i) + ".tsv"
         if glob(filename):
@@ -98,14 +118,32 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
                 + str(maxResults)
             )
             # print("URL: " + psicquicUrl)
-            print("loading ", service_name, "...\t", offset, "~", maxResults)
+            if max_count == "0":
+                print("data not found")
+                return
+            print_text = (
+                str(datetime.now())
+                + "\t>\tloading "
+                + service_name
+                + "...\t"
+                + str(offset)
+                + "~"
+                + str(maxResults)
+                + "\t/ "
+                + str(max_count)
+                + "\t"
+                + str(int(int(maxResults) / int(max_count) * 100))
+                + "%"
+            )
+            log("query_" + service_name, print_text)
+            print(print_text)
             psicquicResultLines = readURL(psicquicUrl).splitlines()
 
             content = ""
             for line in psicquicResultLines:
                 line = str(line, encoding="utf8")
-                # content = arrangeData(line)
-                content += line + "\n"
+                if line.split("\t")[11] not in interactiontype_except_list:
+                    content += line + "\n"
             if len(psicquicResultLines) == 0:
                 return
 
@@ -115,6 +153,7 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
 
             offset += 10000
             maxResults += 10000
+    os.remove("log/query_" + service_name + ".txt")
 
 
 def main(query):
@@ -125,17 +164,17 @@ def main(query):
         # "ChEMBL",
         # "DIP",
         # "HPIDb",
-        "IntAct",
+        # "IntAct",
         # "IMEx",
         # "mentha",
         # "MPIDB",
         # "iRefIndex",
-        # "MatrixDB",
-        # "MINT",
-        # "Reactome",
-        # "Reactome-FIs",
-        # "EBI-GOA-miRNA",
-        # "UniProt",
+        "MatrixDB",
+        "MINT",
+        "Reactome",
+        "Reactome-FIs",
+        "EBI-GOA-miRNA",
+        "UniProt",
         # "MBInfo",
         # "BindingDB",
         # "VirHostNet",
@@ -151,12 +190,21 @@ def main(query):
 
     for service in services:
         if service.name in services_list:
-            queryPsicquic(service.name, service.restUrl,
-                          query, 1, 10000, False)
+            queryPsicquic(service.name, service.restUrl, query, 1, 10000, False)
 
 
 if __name__ == "__main__":
     queryes = ["*"]
+
+    queryes = [
+        "species:human"
+        + " OR species:9606"
+        + " OR taxidA:human"
+        + " OR taxidA:9606"
+        + " OR taxidB:human"
+        + " OR taxidA:9606"
+    ]
+    queryes[0] = queryes[0].replace(" ", "%20")
 
     for query in queryes:
         main(query)

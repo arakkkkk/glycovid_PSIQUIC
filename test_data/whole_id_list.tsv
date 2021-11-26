@@ -1,0 +1,15 @@
+InteractorA	entrez gene/locuslink	uniprotkb	chebi	intact	chembl	refseq	reactome	ensembl	rogid	RNAcentral	BindingDB_monomerID	complex portal
+InteractorB	entrez gene/locuslink	uniprotkb	chebi	intact	signor	chembl	refseq	reactome	ensembl	-	rogid	BindingDB_polymerID	protein ontology
+AlternativeA	biogrid	entrez gene/locuslink	intact	uniprotkb	dip	-	rnacentral	mirbase	ensembl	wwpdb	reactome	matrixdb	chebi	entrezgene/locuslink	refseq	rogid	irogid	cygd	pdb	sgd	flybase	pubchem	chembl	tair
+AlternativeB	biogrid	entrez gene/locuslink	intact	uniprotkb	dip	-	rnacentral	mirbase	intenz	reactome	ensembl	ensemblgenomes	wwpdb	matrixdb	entrezgene/locuslink	refseq	rogid	irogid	cygd	pdb	flybase	sgd	tair
+AliasesA	entrez gene/locuslink	-	psi-mi	uniprotkb	intact	unknown	ensembl	hgnc	crogid	icrogid	RNAcentral	tair	complex portal
+AliasesB	entrez gene/locuslink	-	psi-mi	uniprotkb	intact	unknown	ensembl	PUBMED	HGNC	WORMBASE	ENSEMBL	hgnc	crogid	icrogid	refseq	tair
+Detection methods	psi-mi	-
+First author
+Publication	pubmed	imex	doi	-	mint	patent	DOI	pmid
+TaxonomyA	taxid	-
+TaxonomyB	taxid	-
+Interaction types	psi-mi	-
+Source databases	psi-mi
+Interaction id	biogrid	intact	imex	chembl	wwpdb	dip	mint	mpidb	bind	rigid	edgetype	-	CEN	virhostnet-nrid	virhostnet-rid	hprd	innatedb	mppi	psi-mi	mips	TAU	matrixdb	pdbe	bindingdb	ntnu
+Score	-	author score	intact-miscore	chembl	mentha-score	hpr	lpr	np	NBC	virhostnet-miscore	confidence
