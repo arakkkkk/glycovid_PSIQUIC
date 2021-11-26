@@ -1,6 +1,9 @@
 import csv
-from lib import general_method as gm
-from lib.psiquic_class import PQdataList, PQdata
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
+from mylib import general_method as gm
+from mylib.psiquic_class import PQdataList, PQdata
 
 
 def list_interaction_typs(dirname):
