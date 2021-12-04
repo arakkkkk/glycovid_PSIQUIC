@@ -84,7 +84,6 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
         filename = dirname + "/" + service_name + str(i) + ".tsv"
         if glob(filename):
             offset += 100000
-            maxResults += 100000
             continue
         f = open(filename, "w")
         f.write(
@@ -149,34 +148,33 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
             f.close()
 
             offset += 10000
-            maxResults += 10000
 
 
 def main(query):
     services = readActiveServicesFromRegistry()
     services_list = [
-        # "BioGrid",
-        # "bhf-ucl",
-        # "ChEMBL",
+        "BioGrid",
+        "bhf-ucl",
+        "ChEMBL",
         # "DIP",
-        # "HPIDb",
-        # "IntAct",
-        # "IMEx",
-        # "mentha",
-        # "MPIDB",
+        "HPIDb",
+        "IntAct",
+        "IMEx",
+        "mentha",
+        "MPIDB",
         "iRefIndex",
-        # "MatrixDB",
-        # "MINT",
-        # "Reactome",
-        # "Reactome-FIs",
-        # "EBI-GOA-miRNA",
-        # "UniProt",
-        # "MBInfo",
-        # "BindingDB",
-        # "VirHostNet",
-        # "BAR",
-        # "EBI-GOA-nonIntAct",
-        # "tfact2gene",
+        "MatrixDB",
+        "MINT",
+        "Reactome",
+        "Reactome-FIs",
+        "EBI-GOA-miRNA",
+        "UniProt",
+        "MBInfo",
+        "BindingDB",
+        "VirHostNet",
+        "BAR",
+        "EBI-GOA-nonIntAct",
+        "tfact2gene",
     ]
     import os
 
