@@ -12,75 +12,57 @@ import glob
 from lib import general_method as gm
 import shutil
 import os
+from mylib.expansion_tsv import expansion_tsv_row
 
 
-def has_bar_in_row(row):
-    for column in row:
-        if "|" in column:
-            return True
-    return False
-
-
-def has_bar_in_row_list(row_list: list):
-    for row in row_list:
-        if has_bar_in_row(row):
-            return True
-    return False
-
-
-def expansion_tsv_row(row_list: list):
-    result_list = []
-    for row in row_list:
-        if has_bar_in_row(row):
-            for i in range(len(row)):
-                if "|" in row[i]:
-                    row_a = copy(row)
-                    row_a[i] = re.split("|", row[i])[0]
-                    row_b = copy(row)
-                    row_b[i] = re.split("[|\t$]", row[i])[1]
-                    result_list.append(row_a)
-                    result_list.append(row_b)
-                    break
-        else:
-            result_list.append(row)
-
-    if has_bar_in_row_list(result_list):
-        result_list = expansion_tsv_row(result_list)
-    return result_list
-
-
-def list2tsv(data: list):
-    result = ""
-    for i in range(len(data)):
-        if i != 0:
-            result += "\t"
-
-        if "psi-mi" in data[i]:
-            result += data[i].split('"')[1].split(":")[1]
-        elif ":" in data[i]:
-            result += data[i].split(":")[1].split("(")[0]
-        else:
-            result += data[i]
-    return result
-
-
-def get_target_id(column_data: str):
-    result = {"db": "", "id": ""}
+def treat_data(column_data: str):
     column_data = column_data.split('"')[1]
-    result["db"] = column_data.split(":")[0]
-    result["id"] = column_data.split(":")[1]\
-    .split("(")[0]\
-    .replace(" ", "-")\
-    .replace("_", "-")\
-    return (
-            result
+    db_name = column_data.split(":")[0]
+    identifier = (
+        column_data.split(":")[1].split("(")[0].replace(" ", "-").replace("_", "-")
     )
+    return db_name, identifier
+
+
+def create_subject_uri(column1: str, column2: str):
+    # subject
+    interactor_ab = rdflib.Namespace("https://identifiers.org/matrixdb.association:")
+    db_list = dict()
+    with open("turtle/subject_url_list.csv") as f1:
+        reader = csv.reader(f1, delimiter=",")
+        for row in reader:
+            db_list[row[0]] = rdflib.Namespace(row[1])
+    db_name1, identifier1 = treat_data(column1)
+    db_name2, identifier2 = treat_data(column2)
+    # issue uriの正当性の確認文字列チェック
+    # error handling
+    Interactor_ab = URIRef(interactor_ab + column1.lower() + "__" + column2.lower())
+    return Interactor_ab
+
+
+def create_object_uri(column: str):
+    #############################
+    # uri definition
+    #############################
+    # object
+    db_list = dict()
+    with open("turtle/object_url_list.csv") as f1:
+        reader = csv.reader(f1, delimiter=",")
+        for row in reader:
+            db_list[row[0]] = rdflib.Namespace(row[1])
+
+    db_name, identifier = treat_data(column)
+    createdURI = URIRef(db_list(db_name) + identifier)
+    # error handling
+    return createdURI
 
 
 def create_ttl(dir_name, file_name, service):
     print("create", file_name + ".ttl", "from", dir_name)
     g = Graph()
+    #############################
     # predicate
+    #############################
     detected_by = URIRef("http://www.bioassayontology.org/bao#BAO_0002875")
     author_is = URIRef("http://www.biopax.org/release/biopax-level3.owl#author")
     pub_id = URIRef("http://purl.obolibrary.org/obo/IAO_0000119")
@@ -95,7 +77,6 @@ def create_ttl(dir_name, file_name, service):
     has_interaction_id_lim = URIRef(
         "http://www.linkedmodel.org/schema/vaem#hasIdentifier"
     )
-    ##########################################
     data_xref_obo = URIRef("obolnOwl:hasDbXref")
 
     data_xref_bp = URIRef("http://www.biopax.org/release/biopax-level3.owl#xref")
@@ -104,79 +85,32 @@ def create_ttl(dir_name, file_name, service):
     interaction_param_pos = URIRef(
         "http://rds.posccaesar.org/2008/02/OWL/ISO-15926-2_2003#hasParameters"
     )
-    # interaction_param_bm = URIRef(
-    # "http://www.biomodels.net/kisao/KISAO#KISAO_0000259 (has parameter) "
-    # )
 
-    # subject
-    interactor_ab = rdflib.Namespace("https://identifiers.org/matrixdb.association:")
-
-    # object
-    obo = rdflib.Namespace("http://purl.obolibrary.org/obo/")
-    publication_id = rdflib.Namespace("https://identifiers.org/pubmed:")
-    intact = rdflib.Namespace("https://identifiers.org/intact:")
-    taxon_id = rdflib.Namespace("http://identifiers.org/taxonomy/")
-    taxon_obo = rdflib.Namespace("http://purl.obolibrary.org/obo/NCBITaxon_")
-    interaction_xref = rdflib.Namespace("https://identifiers.org/pdb:")
+    ############################
+    # code
+    ############################
 
     with open(dir_name) as f1:
         reader = csv.reader(f1, delimiter="\t")
         header = next(reader)
         progress = 0
         for row_bef in reader:
-            if has_bar_in_row(row_bef):
-                # |で区切られてるrow dataを展開
-                row_list = expansion_tsv_row([row_bef])
-            else:
-                row_list = [row_bef]
+            row_list = expansion_tsv_row([row_bef])
 
             for row in row_list:
                 progress += 1
                 init_log("progress", str(progress))
                 # カラムデータの取得、バリデーション
-                Dinteractor_a = get_target_id(row[0])
-                Dinteractor_b = get_target_id(row[1])
-                Ddetection_method = get_target_id(row[6])
-                Dpub_id = get_target_id(row[8])
-                Dinteraction_type = get_target_id(row[11])
-                Dsource_database = get_target_id(row[12])
-                Dinteraction_id = get_target_id(row[13])
-                Dtaxon_id = get_target_id(row[9])
-                if (
-                    not Dinteractor_a
-                    or not Dinteractor_b
-                    or not Ddetection_method
-                    or not Dpub_id
-                    or not Dinteraction_type
-                    or not Dsource_database
-                    or not Dinteraction_id
-                    or not Dtaxon_id
-                ):
-                    print("failed: ", row[0], row[1])
-                    log("filed_list", str(reader))
-                    continue
+                Interactor_ab = create_subject_uri(row[0], row[1])
+                Detection_method = create_object_uri(row[6])
+                First_aouthor = Literal(row[7], datatype=XSD.string)
+                Publication_id = create_object_uri(row[8])
+                Interaction_type = create_object_uri(row[11])
+                Source_database = create_object_uri(row[12])
+                Interaction_id = create_object_uri(row[13])
+                Taxon_id = create_object_uri(row[9])
 
                 # URIの作成
-                Interactor_ab = URIRef(
-                    interactor_ab + Dinteractor_a.lower() + "__" + Dinteractor_b.lower()
-                )
-                Detection_method = URIRef(obo + Ddetection_method)
-                First_aouthor = Literal(row[7], datatype=XSD.string)
-                Publication_id = URIRef(publication_id + pub_id)
-                Interaction_type = URIRef(obo + Dinteraction_type)
-                Source_database = URIRef(obo + Dsource_database)
-                Interaction_id = URIRef(intact + Dinteraction_id)
-                # Confidence value
-                # Expansion_method = URIRef(obo + row[])
-                # Interaction_xref = URIRef(obo + row[])
-                # Interaction_annotation = URIRef(obo + row[]) MatrixDBにはなにが入ってる？？
-                Taxon_id = URIRef(taxon_id + Dtaxon_id)
-                # Taxon_obo = URIRef(obo + row[])
-                # Interaction_parameters = URIRef(obo + row[])
-                # Creation_date = URIRef(obo + row[])
-                # Updata_date = URIRef(obo + row[])
-                # INteraction_checksum = URIRef(obo + row[])
-                # Negative = URIRef(obo + row[])
 
                 # RDFの作成
                 g.add((Interactor_ab, detected_by, Detection_method))
@@ -207,7 +141,7 @@ def main():
             os.mkdir("turtle/" + service)
         except:
             pass
-        dir_list = glob.glob("data/" + service + "/*.tsv", recursive=True)
+        dir_list = glob.glob("test_data/" + service + "/*.tsv", recursive=True)
         for i in range(len(dir_list)):
             create_ttl(dir_list[i], service + str(i), service)
 
