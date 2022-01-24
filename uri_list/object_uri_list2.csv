@@ -1,0 +1,62 @@
+psi-mi	http://purl.obolibrary.org/obo/MI_
+pubmed	http://rdf.glycoinfo.org/dbid/pubmed/
+imex	http://rdf.glycoinfo.org/dbid/imex/
+doi	http://rdf.glycoinfo.org/dbid/doi/
+mint	http://rdf.glycoinfo.org/dbid/minT/
+intact	http://rdf.glycoinfo.org/dbid/intact/
+pmid	http://rdf.glycoinfo.org/dbid/pubmed/
+taxid	http://rdf.glycoinfo.org/dbid/taxonomy/
+biogrid	http://rdf.glycoinfo.org/dbid/biogrid/
+tissue list	http://glycovid.glycosmos.org/tissue-list/id/
+go	http://rdf.glycoinfo.org/dbid/GO/
+chebi	http://rdf.glycoinfo.org/dbid/CHEBI/
+chembl	http://rdf.glycoinfo.org/dbid/chembl/
+wwpdb	http://rdf.glycoinfo.org/dbid/pdb/
+pdbe	http://rdf.glycoinfo.org/dbid/pdb/
+rcsb pdb	http://rdf.glycoinfo.org/dbid/pdb/
+emdb	http://rdf.glycoinfo.org/dbid/emdb/
+pride	http://rdf.glycoinfo.org/dbid/pride/
+proteomexchange	http://rdf.glycoinfo.org/dbid/px/
+omim	http://rdf.glycoinfo.org/dbid/OMIM/
+interpro	http://rdf.glycoinfo.org/dbid/interpro/
+intenz	https://www.ebi.ac.uk/intenz/
+bmrb	http://rdf.glycoinfo.org/dbid/bmrb/
+dip	http://rdf.glycoinfo.org/dbid/dip/
+empiar	https://www.ebi.ac.uk/empiar/EMPIAR-10199/
+matrixdb	https://bioregistry.io/reference/matrixdb:
+mpidb	http://rdf.glycoinfo.org/dbid/mpid/
+rigid	http://glycovid.glycosmos.org/rigid/id/
+edgetype	http://glycovid.glycosmos.org/edgetype/id/
+hprd	http://rdf.glycoinfo.org/dbid/hprd/
+bind	http://glycovid.glycosmos.org/bind/id/
+innatedb	http://glycovid.glycosmos.org/innatedb/id/
+CEN	http://glycovid.glycosmos.org/cen/id/
+WEB	http://glycovid.glycosmos.org/web/id/
+WSC	http://glycovid.glycosmos.org/wsc/id/
+mppi	http://glycovid.glycosmos.org/mppi/id/
+TAU	http://glycovid.glycosmos.org/tau/id/
+reactome	http://rdf.glycoinfo.org/dbid/reactome/
+virhostnet-rid	http://glycovid.glycosmos.org/virhostnet-rid/id/
+virhostnet-nrid	http://glycovid.glycosmos.org/virhostnet-nrid/id/
+pdb	http://rdf.glycoinfo.org/dbid/pdb/
+signor	http://rdf.glycoinfo.org/dbid/signor/
+InnateDB	http://glycovid.glycosmos.org/innatedb/id/
+ELK	http://glycovid.glycosmos.org/elk/id/
+chembl target	http://rdf.glycoinfo.org/dbid/chembl.target/
+rhea	http://rdf.glycoinfo.org/dbid/rhea/
+protein ontology	http://purl.obolibrary.org/obo/PR_
+ntnu	http://glycovid.glycosmos.org/ntnu/id/
+entrez gene/locuslink	http://rdf.glycoinfo.org/dbid/ncbigene/
+uniprotkb	http://rdf.glycoinfo.org/dbid/uniprot/
+ensembl	http://glycovid.glycosmos.org/ensembl/id/
+refseq	http://rdf.glycoinfo.org/dbid/refseq/
+ddbj/embl/genbank	http://rdf.glycoinfo.org/dbid/insdc/
+rogid	http://glycovid.glycosmos.org/rogid/id/
+complex	http://glycovid.glycosmos.org/complex/id/
+RNAcentral	http://rdf.glycoinfo.org/dbid/rnacentral/
+complex portal	http://rdf.glycoinfo.org/dbid/complexportal/
+ARN	http://glycovid.glycosmos.org/arn/id/
+InnateDB Allergy	http://glycovid.glycosmos.org/innatedb-allergy/id/
+efo	http://rdf.glycoinfo.org/dbid/efo/
+brenda	http://rdf.glycoinfo.org/dbid/brenda/
+pmc	http://rdf.glycoinfo.org/dbid/pmc/

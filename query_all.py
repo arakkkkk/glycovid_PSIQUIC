@@ -58,7 +58,7 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
         'psi-mi:"MI:0203"(dephosphorylation reaction)',
         'psi-mi:"MI:1110"(predicted interaction)',
     ]
-    dirname = "test_data/" + service_name
+    dirname = "data/" + service_name
     if init:
         try:
             shutil.rmtree(dirname)
@@ -84,68 +84,71 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
         print(service_name, "data not found")
         return
 
-    filename = dirname + "/" + service_name + str(0) + ".tsv"
+    for i in range(0, 10):
+        filename = dirname + "/" + service_name + str(i) + ".tsv"
+        if glob(filename):
+            offset += 100000
+            continue
+        f = open(filename, "w")
+        f.write(
+            "Unique identifier for interactor A"
+            + "\tUnique identifier for interactor B"
+            + "\tAlternative identifier for interactor A"
+            + "\tAlternative identifier for interactor B"
+            + "\tAliases for A"
+            + "\tAliases for B"
+            + "\tInteraction detection methods"
+            + "\tFirst author"
+            + "\tIdentifier of the publication"
+            + "\tNCBI Taxonomy identifier for interactor A"
+            + "\tNCBI Taxonomy identifier for interactor B"
+            + "\tInteraction types"
+            + "\tSource databases"
+            + "\tInteraction identifier(s)"
+            + "\tConfidence score"
+        )
+        f.close()
+        for j in range(10):
+            psicquicUrl = (
+                psicquicRestUrl
+                + "query/"
+                + query
+                + "?firstResult="
+                + str(offset)
+                + "&maxResults="
+                + str(maxResults)
+            )
+            # print("URL: " + psicquicUrl)
+            print_text = (
+                str(datetime.now())
+                + "\t>\tloading "
+                + service_name
+                + "...\t"
+                + str(offset)
+                + "~"
+                + str(maxResults)
+                + "\t/ "
+                + str(max_count)
+                + "\t"
+                + str(int(int(offset) / int(max_count) * 100))
+                + "%"
+            )
+            print(print_text)
+            psicquicResultLines = readURL(psicquicUrl).splitlines()
 
-    f = open(filename, "w")
-    f.write(
-        "Unique identifier for interactor A"
-        + "\tUnique identifier for interactor B"
-        + "\tAlternative identifier for interactor A"
-        + "\tAlternative identifier for interactor B"
-        + "\tAliases for A"
-        + "\tAliases for B"
-        + "\tInteraction detection methods"
-        + "\tFirst author"
-        + "\tIdentifier of the publication"
-        + "\tNCBI Taxonomy identifier for interactor A"
-        + "\tNCBI Taxonomy identifier for interactor B"
-        + "\tInteraction types"
-        + "\tSource databases"
-        + "\tInteraction identifier(s)"
-        + "\tConfidence score"
-    )
-    f.close()
+            content = ""
+            for line in psicquicResultLines:
+                line = str(line, encoding="utf8")
+                if line.split("\t")[11] not in interactiontype_except_list:
+                    content += "\n" + line
+            if len(psicquicResultLines) == 0:
+                return
 
-    psicquicUrl = (
-        psicquicRestUrl
-        + "query/"
-        + query
-        + "?firstResult="
-        + str(offset)
-        + "&maxResults="
-        + str(maxResults)
-    )
+            f = open(filename, "a")
+            f.write(content)
+            f.close()
 
-    print_text = (
-        str(datetime.now())
-        + "\t>\tloading "
-        + service_name
-        + "...\t"
-        + str(offset)
-        + "~"
-        + str(maxResults)
-        + "\t/ "
-        + str(max_count)
-        + "\t"
-        + str(int(int(offset) / int(max_count) * 100))
-        + "%"
-    )
-    print(print_text)
-    psicquicResultLines = readURL(psicquicUrl).splitlines()
-
-    content = ""
-    for line in psicquicResultLines:
-        line = str(line, encoding="utf8")
-        if line.split("\t")[11] not in interactiontype_except_list:
-            # content += line + "\n"
-            content += "\n" + line
-    if len(psicquicResultLines) == 0:
-        return
-
-    f = open(filename, "a")
-    f.write(content)
-    f.close()
-
+            offset += 10000
 
 
 def main(query):
@@ -182,7 +185,7 @@ def main(query):
 
     for service in services:
         if service.name in services_list:
-            queryPsicquic(service.name, service.restUrl, query, 1, 1000, True)
+            queryPsicquic(service.name, service.restUrl, query, 1, 10000, False)
 
 
 if __name__ == "__main__":
@@ -200,4 +203,3 @@ if __name__ == "__main__":
 
     for query in queryes:
         main(query)
-

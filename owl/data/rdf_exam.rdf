@@ -1,0 +1,19 @@
+@prefix bao: <http://www.bioassayontology.org/bao#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix bpo: <http://www.biopax.org/release/biopax-level3.owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix lm: <http://www.linkedmodel.org/schema/vaem#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://identifiers.org/matrixdb.association:ensembl_ENSG00000023445__uniprotkb_Q04206> obo:IAO_0000119 <http://glycoinfo.org/dbid/imex/IM-23322> ;
+    obo:INO_0000154 obo:MI_0914 ;
+    obo:id <http://glycoinfo.org/dbid/imex/IM-23322-1> ;
+    dc:source obo:MI_0469 ;
+    <http://rdf.glycoinfo.org/ontology/interaction#has_interactor_A> <http://glycovid.glycosmos.org/ensembl/id/ENSG00000023445> ;
+    <http://rdf.glycoinfo.org/ontology/interaction#has_interactor_B> <http://glycoinfo.org/dbid/uniprot/Q04206> ;
+    bao:BAO_0000383 <http://glycoinfo.org/dbid/imex/IM-23322-1> ;
+    bao:BAO_0002875 obo:MI_0402 ;
+    bpo:author "Zhao et al. (2011)"^^xsd:string ;
+    bpo:interactionType obo:MI_0914 ;
+    bpo:organism <http://glycoinfo.org/dbid/taxonomy/9606> ;
+    lm:hasIdentifier <http://glycoinfo.org/dbid/imex/IM-23322-1> .
