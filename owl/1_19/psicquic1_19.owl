@@ -149,53 +149,41 @@ obo:OBI_0100026 rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
-###  http://glycoinfo.org/dbid/imex/IM-23322
-<http://glycoinfo.org/dbid/imex/IM-23322> rdf:type owl:NamedIndividual ,
+###  http://rdf.glycoinfo.org/dbid/imex/IM-23322
+<http://rdf.glycoinfo.org/dbid/imex/IM-23322> rdf:type owl:NamedIndividual ,
                                                    obo:NCIT_C93638 .
 
 
-###  http://glycoinfo.org/dbid/imex/IM-23322-1
-<http://glycoinfo.org/dbid/imex/IM-23322-1> rdf:type owl:NamedIndividual ,
+###  http://rdf.glycoinfo.org/dbid/imex/IM-23322-1
+<http://rdf.glycoinfo.org/dbid/imex/IM-23322-1> rdf:type owl:NamedIndividual ,
                                                      <http://rdf.glycoinfo.org/ontology/interaction#InteractionId> .
 
 
-###  http://glycoinfo.org/dbid/taxonomy/9606
-<http://glycoinfo.org/dbid/taxonomy/9606> rdf:type owl:NamedIndividual ,
+###  http://rdf.glycoinfo.org/dbid/taxonomy/9606
+<http://rdf.glycoinfo.org/dbid/taxonomy/9606> rdf:type owl:NamedIndividual ,
                                                    obo:EUPATH_0000591 .
 
 
-###  http://glycoinfo.org/dbid/uniprot/Q04206
-<http://glycoinfo.org/dbid/uniprot/Q04206> rdf:type owl:NamedIndividual ,
+###  http://rdf.glycoinfo.org/dbid/uniprot/Q04206
+<http://rdf.glycoinfo.org/dbid/uniprot/Q04206> rdf:type owl:NamedIndividual ,
                                                     <http://biomodels.net/SBO/SBO_0000241> .
 
 
-###  http://glycovid.glycosmos.org/ensembl/id/ENSG00000023445
-<http://glycovid.glycosmos.org/ensembl/id/ENSG00000023445> rdf:type owl:NamedIndividual ,
+###  http://rdf.glycoinfo.org/dbid/ensembl/ENSG00000023445
+<http://rdf.glycoinfo.org/dbid/ensembl/ENSG00000023445> rdf:type owl:NamedIndividual ,
                                                                     <http://biomodels.net/SBO/SBO_0000241> .
-
-
-###  http://purl.obolibrary.org/obo/MI_0402
-obo:MI_0402 rdf:type owl:NamedIndividual .
-
-
-###  http://purl.obolibrary.org/obo/MI_0469
-obo:MI_0469 rdf:type owl:NamedIndividual .
-
-
-###  http://purl.obolibrary.org/obo/MI_0914
-obo:MI_0914 rdf:type owl:NamedIndividual .
 
 
 ###  https://identifiers.org/matrixdb.association:ensembl_ENSG00000023445__uniprotkb_Q04206
 <https://identifiers.org/matrixdb.association:ensembl_ENSG00000023445__uniprotkb_Q04206> rdf:type owl:NamedIndividual ,
                                                                                                   bpo:MolecularInteraction ;
-                                                                                         obo:IAO_0000119 <http://glycoinfo.org/dbid/imex/IM-23322> ;
+                                                                                         obo:IAO_0000119 <http://rdf.glycoinfo.org/dbid/imex/IM-23322> ;
                                                                                          obo:INO_0000154 obo:MI_0914 ;
-                                                                                         <http://rdf.glycoinfo.org/ontology/interaction#has_interactor_A> <http://glycovid.glycosmos.org/ensembl/id/ENSG00000023445> ;
-                                                                                         <http://rdf.glycoinfo.org/ontology/interaction#has_interactor_B> <http://glycoinfo.org/dbid/uniprot/Q04206> ;
+                                                                                         <http://rdf.glycoinfo.org/ontology/interaction#has_interactor_A> <http://rdf.lycoinfo.org/dbid/ensembl/ENSG00000023445> ;
+                                                                                         <http://rdf.glycoinfo.org/ontology/interaction#has_interactor_B> <http://rdf.glycoinfo.org/dbid/uniprot/Q04206> ;
                                                                                          bpo:interactionType obo:MI_0914 ;
-                                                                                         bpo:organism <http://glycoinfo.org/dbid/taxonomy/9606> ;
-                                                                                         dc:identifier <http://glycoinfo.org/dbid/imex/IM-23322-1> ;
+                                                                                         bpo:organism <http://rdf.glycoinfo.org/dbid/taxonomy/9606> ;
+                                                                                         dc:identifier <http://rdf.glycoinfo.org/dbid/imex/IM-23322-1> ;
                                                                                          dc:source obo:MI_0469 ;
                                                                                          bao:BAO_0002875 obo:MI_0402 .
 

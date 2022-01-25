@@ -7,7 +7,7 @@ intact	http://rdf.glycoinfo.org/dbid/intact/
 pmid	http://rdf.glycoinfo.org/dbid/pubmed/
 taxid	http://rdf.glycoinfo.org/dbid/taxonomy/
 biogrid	http://rdf.glycoinfo.org/dbid/biogrid/
-tissue list	http://glycovid.glycosmos.org/tissue-list/id/
+tissue list	http://rdf.glycoinfo.org/dbid/tissue-list/
 go	http://rdf.glycoinfo.org/dbid/GO/
 chebi	http://rdf.glycoinfo.org/dbid/CHEBI/
 chembl	http://rdf.glycoinfo.org/dbid/chembl/
@@ -19,44 +19,44 @@ pride	http://rdf.glycoinfo.org/dbid/pride/
 proteomexchange	http://rdf.glycoinfo.org/dbid/px/
 omim	http://rdf.glycoinfo.org/dbid/OMIM/
 interpro	http://rdf.glycoinfo.org/dbid/interpro/
-intenz	https://www.ebi.ac.uk/intenz/
+intenz	http://rdf.glycoinfo.org/dbid/intenz/
 bmrb	http://rdf.glycoinfo.org/dbid/bmrb/
 dip	http://rdf.glycoinfo.org/dbid/dip/
-empiar	https://www.ebi.ac.uk/empiar/EMPIAR-10199/
+empiar	http://rdf.glycoinfo.org/dbid/EMPIAR-10199/
 matrixdb	https://bioregistry.io/reference/matrixdb:
 mpidb	http://rdf.glycoinfo.org/dbid/mpid/
-rigid	http://glycovid.glycosmos.org/rigid/id/
-edgetype	http://glycovid.glycosmos.org/edgetype/id/
+rigid	http://rdf.glycoinfo.org/dbid/rigid/
+edgetype	http://rdf.glycoinfo.org/dbid/edgetype/
 hprd	http://rdf.glycoinfo.org/dbid/hprd/
-bind	http://glycovid.glycosmos.org/bind/id/
-innatedb	http://glycovid.glycosmos.org/innatedb/id/
-CEN	http://glycovid.glycosmos.org/cen/id/
-WEB	http://glycovid.glycosmos.org/web/id/
-WSC	http://glycovid.glycosmos.org/wsc/id/
-mppi	http://glycovid.glycosmos.org/mppi/id/
-TAU	http://glycovid.glycosmos.org/tau/id/
+bind	http://rdf.glycoinfo.org/dbid/bind/
+innatedb	http://rdf.glycoinfo.org/dbid/innatedb/
+CEN	http://rdf.glycoinfo.org/dbid/cen/
+WEB	http://rdf.glycoinfo.org/dbid/web/
+WSC	http://rdf.glycoinfo.org/dbid/wsc/
+mppi	http://rdf.glycoinfo.org/dbid/mppi/
+TAU	http://rdf.glycoinfo.org/dbid/tau/
 reactome	http://rdf.glycoinfo.org/dbid/reactome/
-virhostnet-rid	http://glycovid.glycosmos.org/virhostnet-rid/id/
-virhostnet-nrid	http://glycovid.glycosmos.org/virhostnet-nrid/id/
+virhostnet-rid	http://rdf.glycoinfo.org/dbid/virhostnet-rid/
+virhostnet-nrid	http://rdf.glycoinfo.org/dbid/virhostnet-nrid/
 pdb	http://rdf.glycoinfo.org/dbid/pdb/
 signor	http://rdf.glycoinfo.org/dbid/signor/
-InnateDB	http://glycovid.glycosmos.org/innatedb/id/
-ELK	http://glycovid.glycosmos.org/elk/id/
+InnateDB	http://rdf.glycoinfo.org/dbid/innatedb/
+ELK	http://rdf.glycoinfo.org/dbid/elk/
 chembl target	http://rdf.glycoinfo.org/dbid/chembl.target/
 rhea	http://rdf.glycoinfo.org/dbid/rhea/
 protein ontology	http://purl.obolibrary.org/obo/PR_
-ntnu	http://glycovid.glycosmos.org/ntnu/id/
+ntnu	http://rdf.glycoinfo.org/dbid/ntnu/
 entrez gene/locuslink	http://rdf.glycoinfo.org/dbid/ncbigene/
 uniprotkb	http://rdf.glycoinfo.org/dbid/uniprot/
-ensembl	http://glycovid.glycosmos.org/ensembl/id/
+ensembl	http://rdf.glycoinfo.org/dbid/ensembl/
 refseq	http://rdf.glycoinfo.org/dbid/refseq/
 ddbj/embl/genbank	http://rdf.glycoinfo.org/dbid/insdc/
-rogid	http://glycovid.glycosmos.org/rogid/id/
-complex	http://glycovid.glycosmos.org/complex/id/
+rogid	http://rdf.glycoinfo.org/dbid/rogid/
+complex	http://rdf.glycoinfo.org/dbid/complex/
 RNAcentral	http://rdf.glycoinfo.org/dbid/rnacentral/
 complex portal	http://rdf.glycoinfo.org/dbid/complexportal/
-ARN	http://glycovid.glycosmos.org/arn/id/
-InnateDB Allergy	http://glycovid.glycosmos.org/innatedb-allergy/id/
+ARN	http://rdf.glycoinfo.org/dbid/arn/
+InnateDB Allergy	http://rdf.glycoinfo.org/dbid/innatedb-allergy/
 efo	http://rdf.glycoinfo.org/dbid/efo/
 brenda	http://rdf.glycoinfo.org/dbid/brenda/
 pmc	http://rdf.glycoinfo.org/dbid/pmc/
