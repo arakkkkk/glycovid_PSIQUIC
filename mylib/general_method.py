@@ -1,11 +1,10 @@
 def list_serveice():
     services_list = [
-        "BioGrid",
-        "bhf-ucl",
-        "ChEMBL",
-        # "DIP",
-        "HPIDb",
-        "IntAct",
+        # "BioGrid",
+        # "bhf-ucl",
+        # "ChEMBL",
+        # "HPIDb",
+        # "IntAct",
         "IMEx",
         "mentha",
         "MPIDB",

@@ -5,7 +5,7 @@ psi-mi	http://purl.obolibrary.org/obo/MI_	\d{4}
 pubmed	http://rdf.glycoinfo.org/dbid/pubmed/	\d+
 imex	http://rdf.glycoinfo.org/dbid/imex/	IM-\d+(-?)(\d+?)
 doi	http://rdf.glycoinfo.org/dbid/doi/	\d{2}\.\d{4}.+
-mint	http://rdf.glycoinfo.org/dbid/mint/	(MINT\-\d{1,7})|(d-\d{2}-[a-z0-9]{7})
+mint	http://rdf.glycoinfo.org/dbid/mint/	MINT\-\d{1,7}
 intact	http://rdf.glycoinfo.org/dbid/intact/	EBI\-[0-9]+
 pmid	http://rdf.glycoinfo.org/dbid/pubmed/	\d+
 taxid	http://rdf.glycoinfo.org/dbid/taxonomy/	\d+
@@ -53,5 +53,3 @@ bto	http://rdf.glycoinfo.org/dbid/BTO/	\d{7}
 pmc	http://rdf.glycoinfo.org/dbid/pmc/	((PMC)|(PPR))\d+
 ensemblgenomes	http://rdf.glycoinfo.org/dbid/ensemblgenomes/	.+
 ntnu	http://rdf.glycoinfo.org/dbid/ntnu/	.*
-in_vitro http://www.bioassayontosiyousuru.org/bao#BAO_0020008  ()
-chemical_synthesis  http://semanticscience.org/resource/SIO_000559  ()

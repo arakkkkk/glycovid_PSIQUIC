@@ -1,36 +1,45 @@
 import csv
-import rdflib
-from rdflib import Graph
-from rdflib import Namespace
-from rdflib.namespace import RDF, RDFS
-from rdflib.namespace import XSD
-from rdflib import URIRef, Literal
-from copy import copy
-import re
 import glob
-from mylib import general_method as gm
-import shutil
 import os
+import re
+import shutil
+import sys
+from copy import copy
+
+import rdflib
+from rdflib import Graph, Literal, Namespace, URIRef
+from rdflib.namespace import RDF, RDFS, XSD
+
+from mylib import general_method as gm
 from mylib.expansion_tsv import expansion_tsv_row
 
 
 def treat_data(column_data: str):
-    column_data = re.sub('"', "", column_data)
-    column_data = re.sub("'", "", column_data)
-    db_name = column_data.split(":")[0]
+    column_data = re.sub('[\"\']', "", column_data)
+    ## protein ontology:PR(000027395)
+    column_data = re.sub(r"PR\((?P<id>(.*))\)", r"\g<id>", column_data)
+    # psi-mi:ENSG00000109819.(display_long)         intact2.tsv
+    column_data = re.sub(r"doi:https://doi\.org/(?P<id>(.+))", r"doi:\g<id>", column_data)
+    # doi:https://doi.org/10.1038/nature12162
+    column_data = re.sub(r"ensembl:(?P<id>(.+?))\.", r"ensembl:\g<id>", column_data)
+
+    column_data = re.sub(r"\(.*\)", "", column_data)
+
+    db_name = column_data.split(":")[-2]
     identifier = column_data.split(":")[-1]\
                             .replace(" ", "-")\
-                            .replace("_", "-")
 
+    ## MI_MI-0915　→　MI_0915
+    identifier = re.sub(r"MI-(?P<id>(\d*))", r"\g<id>", identifier)
     # データベース固有のデータ変更
-    ## protein ontology:PR(000027395)
-    identifier = re.sub(r"PR\((?P<id>(.*))\)", r"\g<id>", identifier)
     ## P39060-PRO_000005794 → P39060#PRO_000005794
-    identifier = re.sub(r"uniprotkb\-(?P<id>(.+))", r"uniprotkb#\g<id>", identifier)
+    if db_name == "uniprotkb":
+        identifier = re.sub(r"(?P<uniprotid>(.+?))-PRO_(?P<proid>(.+))", r"\g<uniprotid>#PRO_\g<proid>", identifier)
 
     # 余分な文字列データの消去
-    identifier = re.sub(r"\(.*\)", "", identifier)
-    return db_name, identifier
+    # identifier = re.sub(r"\(.*\)", "", identifier)
+    # print(column_data)
+    return db_name.lower(), identifier
 
 def treat_sub_dbname(column: str):
     column = column.lower()
@@ -40,7 +49,8 @@ def treat_sub_dbname(column: str):
 
 def create_subject_uri(column1: str, column2: str):
     # subject
-    interactor_ab = rdflib.Namespace("https://identifiers.org/matrixdb.association:")
+    # interactor_ab = rdflib.Namespace("https://identifiers.org/matrixdb.association:")
+    interactor_ab = rdflib.Namespace("https://rdf.glycoinfo.org/matrixdb.association:")
     # issue uriの正当性の確認文字列チェック
     db_name1, identifier1 = treat_data(column1)
     db_name2, identifier2 = treat_data(column2)
@@ -61,9 +71,13 @@ def create_object_uri(column: str, db_list: dict):
     #############################
 
     db_name, identifier = treat_data(column)
-    createdURI = URIRef(db_list[db_name] + identifier)
+    try:
+        createdURI = URIRef(db_list[db_name] + identifier)
+        return createdURI
+    except:
+        print(db_name, identifier)
+        sys.exit()
 
-    return createdURI
 
 
 def except_columns(row):
@@ -99,13 +113,15 @@ def create_ttl(dir_name, file_name, service):
 
     # data_xref_bp = URIRef("http://www.biopax.org/release/biopax-level3.owl#xref")
     # interaction_annotate = URIRef("http://www.w3.org/2004/02/skos/core#note")
-    organizm = URIRef("http://www.biopax.org/release/biopax-level3.owl#organism")
+    organizm = URIRef("http://semanticscience.org/resource/SIO_000253")
+    in_vitro = URIRef("http://www.bioassayontosiyousuru.org/bao#BAO_0020008")
+    chemical_synthesis = URIRef("http://semanticscience.org/resource/SIO_000559")
     # interaction_param_pos = URIRef(
     #     "http://rds.posccaesar.org/2008/02/OWL/ISO-15926-2_2003#hasParameters"
     # )
 
-    has_interactorA = URIRef("http://rdf.glycoinfo.org/ontology/interaction#has_interactor_A")
-    has_interactorB = URIRef("http://rdf.glycoinfo.org/ontology/interaction#has_interactor_B")
+    has_interactorA = URIRef("http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A")
+    has_interactorB = URIRef("http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_B")
 
     ############################
     # code
@@ -153,7 +169,13 @@ def create_ttl(dir_name, file_name, service):
 
                 if row[9] != "-" and row[9] != "":
                     Taxon_id = create_object_uri(row[9], db_list)
-                    g.add((Interactor_ab, organizm, Taxon_id))
+                    # taxid:-2(chemical synthesis), taxid:-1(in vitro)
+                    if(Taxon_id == "-1"):
+                        g.add((Interactor_ab, organizm, in_vitro))
+                    elif(Taxon_id == "-2"):
+                        g.add((Interactor_ab, organizm, chemical_synthesis))
+                    else:
+                        g.add((Interactor_ab, organizm, Taxon_id))
 
                 if row[11] != "-" and row[11] != "":
                     Interaction_type = create_object_uri(row[11], db_list)

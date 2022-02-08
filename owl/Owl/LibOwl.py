@@ -13,7 +13,8 @@ class LibOwl:
         self.owl_object_properties = self.getOwlObjectProperties(template_file)
         self.owl_classes = self.getOwlClasses(template_file)
         # use individual class instances
-        self.owl_individuals = self.getOwlIndividuals(template_file)
+        # self.owl_individuals = self.getOwlIndividuals(template_file)
+        self.owl_individuals = []
         self.owl_individuals_temp = self.getOwlIndividuals(template_file)
         self.owl_comment = self.getOwlComment(template_file)
 
@@ -171,7 +172,7 @@ class LibOwl:
             assert len(rdf) > 1, "Rdf import error !"
             for r in rdf:
                 col = re.split(r"\s+", r)
-                print(col)
+                # print(col)
                 # spo
                 if len(col) == 4:
                     if col[0] != "":
@@ -224,14 +225,16 @@ class LibOwl:
 
     def createIndividualFromTemp(self, property: str, uri: str):
         individual = Individual(uri)
+        print(property)
         for i in self.owl_individuals_temp:
             for relation in i.relations:
                 if self.toURI(relation["property"]) == property:
-                    for o in self.toURI(relation["object"]):
-                        for ii in self.owl_individuals_temp:
-                            if ii.subject == o:
-                                individual.type = ii.type
-                    individual.type = i.type
+                    print(relation)
+                    for ii in self.owl_individuals_temp:
+                        if ii.subject == o:
+                            print(ii.type)
+                            individual.type = ii.type
+                    # individual.type = i.type
         if individual.type is None:
             print("eror >>        type is none")
             sys.exit()

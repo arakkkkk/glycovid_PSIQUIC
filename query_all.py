@@ -58,6 +58,10 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
         'psi-mi:"MI:0203"(dephosphorylation reaction)',
         'psi-mi:"MI:1110"(predicted interaction)',
     ]
+    try:
+        os.mkdir("data")
+    except:
+        pass
     dirname = "data/" + service_name
     if init:
         try:
