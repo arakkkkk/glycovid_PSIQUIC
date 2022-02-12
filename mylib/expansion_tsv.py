@@ -1,14 +1,16 @@
-import os
-import re
 import csv
 import os
+import re
+import shutil
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
-from mylib import general_method as gm
-from mylib.psiquic_class import PQdataList, PQdata
-import glob
 
+sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
+import glob
 from copy import copy
+
+from mylib import general_method as gm
+from mylib.psiquic_class import PQdata, PQdataList
+
 
 def get_target_id(column_data: str, db_name: str):
     if db_name in column_data:
@@ -71,44 +73,43 @@ def list2tsv(data: list):
             result += data[i]
     return result
 
+def except_columns(row):
+    except_list = [2,3,4,5, 7,10,14]
+    for i in range(len(row)):
+        if i in except_list:
+            row[i] = ""
+    return row
 
 # barで分けて展開したものをファイルの保存
 def expansion_tsv(dirname):
     services_list = gm.list_serveice()
-    column_label = gm.list_column_label()
-    pqdatalist = PQdataList()
-
+    in_dir = "data/"
+    out_dir = "expdata/"
     for service in services_list:
-        dir_name = dirname + "/" + service
-        file_list = glob.glob(dir_name + "/*.tsv", recursive=True)
-        for i in range(len(file_list)):
-            os.mkdir(dirname + "/" + service + "/" + service + str(i))
-
-            with open(dir_name + ".tsv") as f1:
+        try:
+            shutil.rmtree(dirname + out_dir +  service)
+        except:
+            pass
+        try:
+            os.mkdir(dirname + out_dir + service)
+        except:
+            pass
+        dir_list = glob.glob(dirname + in_dir + service + "/*.tsv", recursive=True)
+        for i in range(len(dir_list)):
+            print("... expantion tsv :", dir_list[i], "\t", i+1, "/", len(dir_list))
+            with open(dir_list[i]) as f1:
                 reader = csv.reader(f1, delimiter="\t")
-                header = next(reader)
-                for row in reader:
-                    if has_bar_in_row(row):
-                        # |で区切られてるrow dataを展開
-                        row_list = expansion_tsv_row([row])
-                        for devided_row in row_list:
-                            pqdatalist.add(devided_row)
-            # ファイルへの出力
-            for i in range(len(pqdatalist.data)):
-                pqdata = pqdatalist.data[i]
-                f = open(dir_name + "_s" + str(i) + ".tsv", "w")
-                f.write(list2tsv(column_label))
-                f.close()
-                for row in pqdata.row_list:
-                    f = open(dir_name + "_s" + str(i) + ".tsv", "a")
-                    f.write("\n" + list2tsv(row))
-                    f.close()
-                print(pqdata.id_set)
-                print("created ", dir_name + "_s" + str(i) + ".tsv")
+                with open(dirname + out_dir +  service + "/" + dir_list[i].split("/")[-1], mode='w') as f:
+                    f.write("")
+                for row_bef in reader:
+                    row_bef = except_columns(row_bef)
+                    row_list = expansion_tsv_row([row_bef])
+                    # print("------------------------------\n")
+                    with open(dirname + out_dir +  service + "/" + dir_list[i].split("/")[-1], mode='a') as f:
+                        for row in row_list:
+                            f.write("\t".join(row) + "\n")
 
 
 if __name__ == "__main__":
-    dirname = "test_data/"
-    # dirname = "data/"
-    # main1(dirname)
+    dirname = "/Users/kouiti/localfile/glycovid_PSIQUIC/"
     expansion_tsv(dirname)

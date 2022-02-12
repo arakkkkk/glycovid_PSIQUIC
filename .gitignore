@@ -1,8 +1,9 @@
 data/*
+expdata/*
 data_1_27/
 dataaaa*/*
 log/
-owl/1_19/data/
+owl/**/data/
 
 turtle/
 

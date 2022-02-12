@@ -30,13 +30,15 @@ def validata_uri(uri: str, uri_patterns: list) -> bool:
             # uri_patterns.remove(uri_pattern)
             # return isCorrect
     if not isCorrect:
-        # print("Error wrong uri :", uri)
+        # if not re.match(r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+-\d+>", uri)\
+        #   and not re.match(r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+#PRO_\d+>", uri):
+        #     print("Error wrong uri :", uri)
         if uri != "<http://rdf.glycoinfo.org/dbid/taxonomy/-2>"\
                 and not re.match(r"<http://rdf.glycoinfo.org/dbid/taxonomy/-1>", uri)\
                 and not re.match(r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+#PRO_\d+>", uri)\
                 and not re.match(r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+-\d+>", uri)\
                 and not re.match(r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/pubmed\/unassigned\d+>", uri)\
-                and not re.match(r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/mpid\/MPIDB-INT-\d{3,4}>", uri):
+                and not re.match(r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/rigid\/[A-Za-z0-9\+\/]+>", uri):
             print("failed in ", uri)
             sys.exit()
     return isCorrect

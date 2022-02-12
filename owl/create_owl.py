@@ -80,7 +80,7 @@ def create_owl(file: str, out_dir: str,s: str, po: dict) -> None:
         owl_list.append("")
         owl_list.append("")
         # break
-    with open("owl/1_19/psicquic_temp_1_19.owl") as f:
+    with open("owl/2_8/psicquic_temp_1_19.owl") as f:
         temp_text = f.read()
     with open(out_dir + "/" + file.split("/")[-1].split(".")[0] + ".owl", mode='w') as f:
         f.write(temp_text + "\n\n")
@@ -105,7 +105,9 @@ def create_spo(col: list, owl_list: list, s: str, po: dict, uri:str, property: s
             owl_list.append("")
             owl_list.append("")
             return
-    if re.match(r".+/MI_\d+>", uri):
+    if re.match(r".+/MI_\d+>", uri)\
+            or uri == "http://www.bioassayontosiyousuru.org/bao#BAO_0020008"\
+            or uri == "http://semanticscience.org/resource/SIO_000559":
         return
     # print(col)
     print("error: create_spo", uri, property)
@@ -149,7 +151,7 @@ def main(dirname:str, test: bool):
 
 
 if __name__ == "__main__":
-    dirname = "owl/1_19/data"
+    dirname = "owl/2_8/data"
     # main(dirname, True)
     main(dirname, False)
 
