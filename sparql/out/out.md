@@ -1,9 +1,9 @@
-
-
-
-
 # list_propaties
+
 ## SPARQL query
+
+:::details title
+
 ```
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix owl: <http://www.w3.org/2002/07/owl#>
@@ -13,7 +13,11 @@ WHERE {
   ?subject ?predicate ?object
 }
 ```
+
+:::
+
 ## RESULTS
+
 ```
 {
   "head": {
@@ -172,11 +176,10 @@ WHERE {
 }
 ```
 
-
-
-
 # list_classes
+
 ## SPARQL query
+
 ```
 prefix owl: <http://www.w3.org/2002/07/owl#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -186,7 +189,9 @@ WHERE {
   ?s a ?class.
 }
 ```
+
 ## RESULTS
+
 ```
 {
   "head": {
@@ -279,11 +284,10 @@ WHERE {
 }
 ```
 
-
-
-
 # sample_spo
+
 ## SPARQL query
+
 ```
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix owl: <http://www.w3.org/2002/07/owl#>
@@ -293,7 +297,9 @@ WHERE {
   <http://rdf.glycoinfo.org/matrixdb.association:chebi_241349__uniprotkb_P02649> ?p ?o
 }
 ```
+
 ## RESULTS
+
 ```
 {
   "head": {
@@ -499,11 +505,10 @@ WHERE {
 }
 ```
 
-
-
-
 # selection_of_classes
+
 ## SPARQL query
+
 ```
 prefix owl: <http://www.w3.org/2002/07/owl#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -515,7 +520,9 @@ WHERE {
   OPTIONAL { ?class rdfs:comment ?description}
 }
 ```
+
 ## RESULTS
+
 ```
 {
   "head": {
@@ -941,11 +948,10 @@ WHERE {
 }
 ```
 
-
-
-
 # count_subject
+
 ## SPARQL query
+
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -954,7 +960,9 @@ WHERE {
   ?s ?p ?o
 }
 ```
+
 ## RESULTS
+
 ```
 {
   "head": {
@@ -976,11 +984,10 @@ WHERE {
 }
 ```
 
-
-
-
 # list_class
+
 ## SPARQL query
+
 ```
 prefix owl: <http://www.w3.org/2002/07/owl#>
 
@@ -989,7 +996,9 @@ WHERE {
   ?subject a ?class
 }
 ```
+
 ## RESULTS
+
 ```
 {
   "head": {
