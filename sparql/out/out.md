@@ -1,6 +1,7 @@
----
 ## SPARQL query
+
 list_propaties
+
 ```
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix owl: <http://www.w3.org/2002/07/owl#>
@@ -10,7 +11,9 @@ WHERE {
   ?subject ?predicate ?object
 }
 ```
+
 ## RESULTS
+
 ```
 {"head": {"vars": ["predicate"]}, "results": {"bindings": [{"predicate": {"type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"}}, {"predicate": {"type": "uri", "value": "http://purl.obolibrary.org/obo/IAO_0000115"}}, {"predicate": {"type": "uri", "value": "http://purl.obolibrary.org/obo/IAO_0006012"}}, {"predicate": {"type": "uri", "value": "http://www.w3.org/2000/01/rdf-schema#label"}}, {"predicate": {"type": "uri", "value": "http://www.w3.org/2002/07/owl#equivalentClass"}}, {"predicate": {"type": "uri", "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"}}, {"predicate": {"type": "uri", "value": "http://purl.obolibrary.org/obo/IAO_0000119"}}, {"predicate": {"type": "uri", "value": "http://purl.obolibrary.org/obo/INO_0000154"}}, {"predicate": {"type": "uri", "value": "http://purl.org/dc/elements/1.1/identifier"}}, {"predicate": {"type": "uri", "value": "http://purl.org/dc/elements/1.1/source"}}, {"predicate": {"type": "uri", "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A"}}, {"predicate": {"type": "uri", "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_B"}}, {"predicate": {"type": "uri", "value": "http://semanticscience.org/resource/SIO_000253"}}, {"predicate": {"type": "uri", "value": "http://www.bioassayontology.org/bao#BAO_0002875"}}, {"predicate": {"type": "uri", "value": "http://www.biopax.org/release/biopax-level3.owl#interactionType"}}, {"predicate": {"type": "uri", "value": "http://www.w3.org/2000/01/rdf-schema#range"}}, {"predicate": {"type": "uri", "value": "http://www.w3.org/2000/01/rdf-schema#domain"}}, {"predicate": {"type": "uri", "value": "http://www.w3.org/2002/07/owl#versionIRI"}}, {"predicate": {"type": "uri", "value": "http://www.w3.org/2002/07/owl#imports"}}, {"predicate": {"type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first"}}, {"predicate": {"type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"}}, {"predicate": {"type": "uri", "value": "http://www.w3.org/2002/07/owl#onProperty"}}, {"predicate": {"type": "uri", "value": "http://www.w3.org/2002/07/owl#someValuesFrom"}}, {"predicate": {"type": "uri", "value": "http://www.w3.org/2002/07/owl#intersectionOf"}}]}}
 ```
