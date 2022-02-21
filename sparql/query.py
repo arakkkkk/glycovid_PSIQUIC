@@ -16,9 +16,9 @@ def sparql(endpoint: str, sparqlist_dir: str):
         sparql.setQuery(query)
         sparql.setReturnFormat(JSON)
         with open(sparqlist_dir + "/../out/out.md", "a") as f:
-            f.write("\n--- \n")
+            f.write("\n\n\n\n")
+            f.write("# " + dir_list[i].split("/")[-1].split(".")[0] + "\n")
             f.write("## SPARQL query\n")
-            f.write(dir_list[i].split("/")[-1].split(".")[0] + "\n")
             f.write("```\n")
             f.write(query)
             f.write("```\n")
@@ -27,7 +27,7 @@ def sparql(endpoint: str, sparqlist_dir: str):
             with open(sparqlist_dir + "/../out/out.md", "a") as f:
                 f.write("## RESULTS\n")
                 f.write("```\n")
-                f.write(json.dumps(results) + "\n")
+                f.write(json.dumps(results, indent=2) + "\n")
                 f.write("```\n")
             # for head in results["head"]["vars"]:
             #     print("\t", head, end="")
