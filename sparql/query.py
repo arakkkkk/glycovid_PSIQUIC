@@ -26,9 +26,13 @@ def sparql(endpoint: str, sparqlist_dir: str):
             results = sparql.queryAndConvert()
             with open(sparqlist_dir + "/../out/out.md", "a") as f:
                 f.write("## RESULTS\n")
+                f.write("<details>\n")
+                f.write("<summary>Toggle</summary>\n")
+                f.write("\n")
                 f.write("```\n")
                 f.write(json.dumps(results, indent=2) + "\n")
                 f.write("```\n")
+                f.write("</details>\n")
             # for head in results["head"]["vars"]:
             #     print("\t", head, end="")
             # print()
