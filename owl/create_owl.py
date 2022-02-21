@@ -4,23 +4,24 @@ import re
 import shutil
 import sys
 
-sys.path.append('/Users/kouiti/localfile/glycovid_PSIQUIC')
+sys.path.append("/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC")
 from mylib import general_method as gm
 
 
-def toURI(text:str, prefix):
+def toURI(text: str, prefix):
     if text[0:1] == "<" and text[-1:] == ">":
         return text
     else:
         for key in prefix:
-            if re.match(r"^"+key, text):
+            if re.match(r"^" + key, text):
                 text = text.replace(key, prefix[key][:-1], 1)
                 text += ">"
                 return text
     print("error: in toURI: ", text)
     sys.exit()
 
-def create_owl(file: str, out_dir: str,s: str, po: dict) -> None:
+
+def create_owl(file: str, out_dir: str, s: str, po: dict) -> None:
     with open(file) as f:
         isRdf = False
         prefix = dict()
@@ -80,18 +81,24 @@ def create_owl(file: str, out_dir: str,s: str, po: dict) -> None:
         owl_list.append("")
         owl_list.append("")
         # break
-    with open("owl/2_8/psicquic_temp_1_19.owl") as f:
+    with open("owl/2_8/psicquic_temp_2_8.owl") as f:
         temp_text = f.read()
-    with open(out_dir + "/" + file.split("/")[-1].split(".")[0] + ".owl", mode='w') as f:
+    with open(
+        out_dir + "/" + file.split("/")[-1].split(".")[0] + ".owl.ttl", mode="w"
+    ) as f:
         f.write(temp_text + "\n\n")
     # print("------------------------------\n")
-    with open(out_dir + "/" + file.split("/")[-1].split(".")[0] + ".owl", mode='a') as f:
+    with open(
+        out_dir + "/" + file.split("/")[-1].split(".")[0] + ".owl.ttl", mode="a"
+    ) as f:
         for line in owl_list:
             f.write(line + "\n")
             # print(line)
 
 
-def create_spo(col: list, owl_list: list, s: str, po: dict, uri:str, property: str = None) -> None:
+def create_spo(
+    col: list, owl_list: list, s: str, po: dict, uri: str, property: str = None
+) -> None:
     if property is None:
         owl_list.append("### " + uri)
         owl_list.append(uri + " rdf:type owl:NamedIndividual ,")
@@ -105,28 +112,30 @@ def create_spo(col: list, owl_list: list, s: str, po: dict, uri:str, property: s
             owl_list.append("")
             owl_list.append("")
             return
-    if re.match(r".+/MI_\d+>", uri)\
-            or uri == "http://www.bioassayontosiyousuru.org/bao#BAO_0020008"\
-            or uri == "http://semanticscience.org/resource/SIO_000559":
+    if (
+        re.match(r".+/MI_\d+>", uri)
+        or uri == "http://www.bioassayontosiyousuru.org/bao#BAO_0020008"
+        or uri == "http://semanticscience.org/resource/SIO_000559"
+    ):
         return
     # print(col)
     print("error: create_spo", uri, property)
     sys.exit()
 
 
-def main(dirname:str, test: bool):
+def main(dirname: str, test: bool):
     s = "<http://www.biopax.org/release/biopax-level3.owl#MolecularInteraction>"
     po = {
-            "<http://purl.obolibrary.org/obo/IAO_0000119>": "<http://purl.obolibrary.org/obo/NCIT_C93638>",
-            # "obo:INO_0000154": "",
-            "<http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A>": "<http://biomodels.net/SBO/SBO_0000241>",
-            "<http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_B>": "<http://biomodels.net/SBO/SBO_0000241>",
-            # "bpo:interactionType": "",
-            "<http://www.biopax.org/release/biopax-level3.owl#organism>": "<http://purl.obolibrary.org/obo/EUPATH_0000591>",
-            "<http://purl.org/dc/elements/1.1/identifier>": "<http://rdf.glycoinfo.org/ontology/interaction#InteractionId>",
-            # "dc:source": "",
-            # "bao:BAO_0002875": "",
-            }
+        "<http://purl.obolibrary.org/obo/IAO_0000119>": "<http://purl.obolibrary.org/obo/NCIT_C93638>",
+        # "obo:INO_0000154": "",
+        "<http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A>": "<http://biomodels.net/SBO/SBO_0000241>",
+        "<http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_B>": "<http://biomodels.net/SBO/SBO_0000241>",
+        # "bpo:interactionType": "",
+        "<http://semanticscience.org/resource/SIO_000253>": "<http://purl.obolibrary.org/obo/EUPATH_0000591>",
+        "<http://purl.org/dc/elements/1.1/identifier>": "<http://rdf.glycoinfo.org/ontology/interaction#InteractionId>",
+        # "dc:source": "",
+        # "bao:BAO_0002875": "",
+    }
     services_list = gm.list_serveice()
     for service in services_list:
         try:
@@ -143,18 +152,26 @@ def main(dirname:str, test: bool):
             pass
         dir_list = glob.glob("turtle/" + service + "/*.ttl", recursive=True)
         for i in range(len(dir_list)):
-            print("... create owl from", dir_list[i], "\t", i+1, "/", len(dir_list))
+            print("... create owl from", dir_list[i], "\t", i + 1, "/", len(dir_list))
             create_owl(dir_list[i], dirname + "/" + service, s, po)
             if test:
                 break
-                # return
+    try:
+        os.mkdir(dirname + "/all")
+    except:
+        pass
+    dir_list = glob.glob("owl/2_8/data/**/*.owl.ttl", recursive=True)
+    for i in range(len(dir_list)):
+        bef_dir = dir_list[i]
+        if "all" in bef_dir:
+            continue
+        aft_dir = re.sub(r"owl/2_8/data/[^/]+", "owl/2_8/data/all", dir_list[i])
+        print("copy", bef_dir, "to", aft_dir)
+        shutil.copy(bef_dir, aft_dir)
+        # return
 
 
 if __name__ == "__main__":
     dirname = "owl/2_8/data"
     # main(dirname, True)
     main(dirname, False)
-
-
-
-

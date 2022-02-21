@@ -21,30 +21,24 @@ def toURI(text:str, prefix) -> str:
     print("error: in toURI: ", text)
     sys.exit()
 
-def validata_uri(uri: str, uri_patterns: list) -> bool:
+def validate_uri(uri: str, uri_patterns: list, except_json: dict) -> bool:
     isCorrect = False
     for uri_pattern in uri_patterns:
         if re.match(uri_pattern, uri):
             isCorrect = True
-            # print(uri)
-            # uri_patterns.remove(uri_pattern)
-            # return isCorrect
     if not isCorrect:
-        # if not re.match(r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+-\d+>", uri)\
-        #   and not re.match(r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+#PRO_\d+>", uri):
-        #     print("Error wrong uri :", uri)
-        if uri != "<http://rdf.glycoinfo.org/dbid/taxonomy/-2>"\
-                and not re.match(r"<http://rdf.glycoinfo.org/dbid/taxonomy/-1>", uri)\
-                and not re.match(r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+#PRO_\d+>", uri)\
-                and not re.match(r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+-\d+>", uri)\
-                and not re.match(r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/pubmed\/unassigned\d+>", uri)\
-                and not re.match(r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/rigid\/[A-Za-z0-9\+\/]+>", uri):
-            print("failed in ", uri)
+        isExcept = False
+        for except_regex in except_json:
+            if re.match(except_regex, uri):
+                except_json[except_regex] += 1
+                isExcept = True
+        if not isExcept:
+            print("Error in:" + uri)
             sys.exit()
     return isCorrect
 
 
-def validata_turtle(file: str, uri_pattern: list) -> None:
+def validate_turtle(file: str, uri_pattern: list, except_json: dict) -> None:
     with open(file) as f:
         prefix = dict()
         for line in f:
@@ -69,22 +63,36 @@ def validata_turtle(file: str, uri_pattern: list) -> None:
                 if len(col) == 4:
                     if col[0] != "":
                         uri = toURI(col[0], prefix)
-                        validata_uri(uri, uri_pattern)
+                        validate_uri(uri, uri_pattern, except_json)
                         uri = toURI(col[2], prefix)
-                        validata_uri(uri, uri_pattern)
+                        validate_uri(uri, uri_pattern, except_json)
                     else:
                         uri = toURI(col[2], prefix)
-                        validata_uri(uri, uri_pattern)
+                        validate_uri(uri, uri_pattern, except_json)
                 # po
                 elif len(col) == 3:
                     uri = toURI(col[1], prefix)
                 else:
                     uri = toURI(line[0], prefix)
 
+def get_except_json():
+    return {
+            # r"<http://rdf.glycoinfo.org/dbid/taxonomy/-2>": 0,
+            # r"<http://rdf.glycoinfo.org/dbid/taxonomy/-1>": 0,
+            r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+#PRO_\d+>": 0,
+            r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+-\d+>": 0,
+            # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/pubmed\/unassigned\d+>": 0,
+            r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/rigid\/[A-Za-z0-9\+\/]+>": 0,
+            # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/reactome\/REACT_\d{4}\.\d>": 0,
+            # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/Missing-Uniprot-ID-for-[A-Z0-9]+>": 0,
+            # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/ensembl\/Missing-Ensembl-Gene-ID-for-[-@A-Z0-9]+>": 0
+            }
 
 def main():
     services_list = gm.list_serveice()
     uri_pattern = list()
+    with open("turtle/errors.yaml", "w") as f:
+        f.write("")
     with open("uri_list/object_uri_list2.csv") as f1:
         reader = csv.reader(f1, delimiter="\t")
         for row in reader:
@@ -93,9 +101,15 @@ def main():
 
     for service in services_list:
         dir_list = glob.glob("turtle/" + service + "/*.ttl", recursive=True)
+        except_json = get_except_json()
         for i in range(len(dir_list)):
             print(dir_list[i], "checking ...")
-            validata_turtle(dir_list[i], uri_pattern)
+            validate_turtle(dir_list[i], uri_pattern, except_json)
+        with open("turtle/errors.yaml", "a") as f:
+            f.write(service + ":\n")
+        for except_regex in except_json:
+            with open("turtle/errors.yaml", "a") as f:
+                f.write("\t" + except_regex.replace("\\/", "/") + ":\t" + str(except_json[except_regex]) + "\n")
 
 
 if __name__ == "__main__":

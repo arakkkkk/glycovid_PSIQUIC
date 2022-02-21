@@ -5,7 +5,7 @@ psi-mi	http://purl.obolibrary.org/obo/MI_	\d{4}
 pubmed	http://rdf.glycoinfo.org/dbid/pubmed/	\d+
 imex	http://rdf.glycoinfo.org/dbid/imex/	((IM-\d+(-?)(\d+?))|(\d+))
 doi	http://rdf.glycoinfo.org/dbid/doi/	\d{2}\.\d{4}.+
-mint	http://rdf.glycoinfo.org/dbid/mint/	((MINT\-\d{1,7})|(d-\d{2}-[a-z0-9]{7})|(fj-\d{2}-\d{4}))
+mint	http://rdf.glycoinfo.org/dbid/mint/	((MINT\-\d{1,7})|(d-\d{2}-[a-z0-9]{5,7})|(fj-\d{2}-\d{4}))
 intact	http://rdf.glycoinfo.org/dbid/intact/	EBI\-[0-9]+
 pmid	http://rdf.glycoinfo.org/dbid/pubmed/	\d+
 taxid	http://rdf.glycoinfo.org/dbid/taxonomy/	\d+
@@ -31,8 +31,8 @@ mpidb	http://rdf.glycoinfo.org/dbid/mpid/	((\d+)|(MPIDB-INT-\d{3,4}))
 rigid	http://rdf.glycoinfo.org/dbid/rigid/	[A-Za-z0-9\+]+
 hprd	http://rdf.glycoinfo.org/dbid/hprd/	\d+
 reactome	http://rdf.glycoinfo.org/dbid/reactome/	(R-[A-Z]{3}-\d+)(?:\.\d+)?
-virhostnet-rid	http://rdf.glycoinfo.org/dbid/virhostnet-rid/	\d{5}
-virhostnet-nrid	http://rdf.glycoinfo.org/dbid/virhostnet-nrid/	\d{5}
+virhostnet-rid	http://rdf.glycoinfo.org/dbid/virhostnet-rid/	\d{3,6}
+virhostnet-nrid	http://rdf.glycoinfo.org/dbid/virhostnet-nrid/	\d{3,6}
 pdb	http://rdf.glycoinfo.org/dbid/pdb/	[0-9][A-Za-z0-9]{3}
 signor	http://rdf.glycoinfo.org/dbid/signor/	SIGNOR\-[A-Z]+\d+
 chembl target	http://rdf.glycoinfo.org/dbid/chembl.target/	CHEMBL\d+
