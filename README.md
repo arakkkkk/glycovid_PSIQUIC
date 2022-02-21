@@ -1,6 +1,7 @@
 # glycovid_PSIQUIC
 
 ## Content
+
 ```
 # query psicquic data by rest api
 python query_all.py
@@ -15,12 +16,15 @@ python sparql/query.py
 # check /sparql/out/out.md
 ```
 
+[rdf contain](https://github.com/arakkkkk/glycovid_PSIQUIC/blob/main/sparql/out/out.md)<br>
+
 ### Description
+
 - mylib/general_method.py
-    - service list of psicquic
+  - service list of psicquic
 - data/
-    - query results
+  - query results
 - expdata/
-    - results of expantion tsvdata
+  - results of expantion tsvdata
 - sparql/
-    - run sparql query in python
+  - run sparql query in python
