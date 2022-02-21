@@ -1,7 +1,9 @@
+
+
+
+
 # list_propaties
-
-## SPARQL query
-
+### SPARQL query
 ```
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix owl: <http://www.w3.org/2002/07/owl#>
@@ -11,9 +13,7 @@ WHERE {
   ?subject ?predicate ?object
 }
 ```
-
-## RESULTS
-
+### RESULTS
 <details>
 <summary>Toggle</summary>
 
@@ -174,13 +174,13 @@ WHERE {
   }
 }
 ```
-
 </details>
 
+
+
+
 # list_classes
-
-## SPARQL query
-
+### SPARQL query
 ```
 prefix owl: <http://www.w3.org/2002/07/owl#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -190,9 +190,7 @@ WHERE {
   ?s a ?class.
 }
 ```
-
-## RESULTS
-
+### RESULTS
 <details>
 <summary>Toggle</summary>
 
@@ -287,13 +285,13 @@ WHERE {
   }
 }
 ```
-
 </details>
 
+
+
+
 # sample_spo
-
-## SPARQL query
-
+### SPARQL query
 ```
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix owl: <http://www.w3.org/2002/07/owl#>
@@ -303,9 +301,7 @@ WHERE {
   <http://rdf.glycoinfo.org/matrixdb.association:chebi_241349__uniprotkb_P02649> ?p ?o
 }
 ```
-
-## RESULTS
-
+### RESULTS
 <details>
 <summary>Toggle</summary>
 
@@ -513,13 +509,13 @@ WHERE {
   }
 }
 ```
-
 </details>
 
+
+
+
 # selection_of_classes
-
-## SPARQL query
-
+### SPARQL query
 ```
 prefix owl: <http://www.w3.org/2002/07/owl#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -531,9 +527,7 @@ WHERE {
   OPTIONAL { ?class rdfs:comment ?description}
 }
 ```
-
-## RESULTS
-
+### RESULTS
 <details>
 <summary>Toggle</summary>
 
@@ -961,13 +955,13 @@ WHERE {
   }
 }
 ```
-
 </details>
 
+
+
+
 # count_subject
-
-## SPARQL query
-
+### SPARQL query
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -976,9 +970,7 @@ WHERE {
   ?s ?p ?o
 }
 ```
-
-## RESULTS
-
+### RESULTS
 <details>
 <summary>Toggle</summary>
 
@@ -1002,13 +994,13 @@ WHERE {
   }
 }
 ```
-
 </details>
 
+
+
+
 # list_class
-
-## SPARQL query
-
+### SPARQL query
 ```
 prefix owl: <http://www.w3.org/2002/07/owl#>
 
@@ -1017,9 +1009,7 @@ WHERE {
   ?subject a ?class
 }
 ```
-
-## RESULTS
-
+### RESULTS
 <details>
 <summary>Toggle</summary>
 
@@ -1114,5 +1104,4 @@ WHERE {
   }
 }
 ```
-
 </details>
