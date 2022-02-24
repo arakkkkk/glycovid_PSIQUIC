@@ -15,11 +15,13 @@ from mylib.expansion_tsv import expansion_tsv_row
 
 
 def treat_data(column_data: str):
-    column_data = re.sub('[\"\']', "", column_data)
-    ## protein ontology:PR(000027395)
+    column_data = re.sub("[\"']", "", column_data)
+    # protein ontology:PR(000027395)
     column_data = re.sub(r"PR\((?P<id>(.*))\)", r"\g<id>", column_data)
     # psi-mi:ENSG00000109819.(display_long)         intact2.tsv
-    column_data = re.sub(r"doi:https://doi\.org/(?P<id>(.+))", r"doi:\g<id>", column_data)
+    column_data = re.sub(
+        r"doi:https://doi\.org/(?P<id>(.+))", r"doi:\g<id>", column_data
+    )
     # doi:https://doi.org/10.1038/nature12162
     column_data = re.sub(r"ensembl:(?P<id>(.+?))\.", r"ensembl:\g<id>", column_data)
     # emd-000000   ->   EMD-0000000
@@ -28,26 +30,30 @@ def treat_data(column_data: str):
     column_data = re.sub(r"\(.*\)", "", column_data)
 
     db_name = column_data.split(":")[-2]
-    identifier = column_data.split(":")[-1]\
-                            .replace(" ", "-")\
-
-    ## MI_MI-0915　→　MI_0915
+    identifier = column_data.split(":")[-1].replace(" ", "-")
+    # MI_MI-0915　→　MI_0915
     identifier = re.sub(r"MI-(?P<id>(\d*))", r"\g<id>", identifier)
     # データベース固有のデータ変更
-    ## P39060-PRO_000005794 → P39060#PRO_000005794
+    # P39060-PRO_000005794 → P39060#PRO_000005794
     if db_name == "uniprotkb":
-        identifier = re.sub(r"(?P<uniprotid>(.+?))-PRO_(?P<proid>(.+))", r"\g<uniprotid>#PRO_\g<proid>", identifier)
+        identifier = re.sub(
+            r"(?P<uniprotid>(.+?))-PRO_(?P<proid>(.+))",
+            r"\g<uniprotid>#PRO_\g<proid>",
+            identifier,
+        )
 
     # 余分な文字列データの消去
     # identifier = re.sub(r"\(.*\)", "", identifier)
     # print(column_data)
     return db_name.lower(), identifier
 
+
 def treat_sub_dbname(column: str):
     column = column.lower()
     column = column.split("/")[-1]
     column = column.replace(" ", "-")
     return column
+
 
 def create_subject_uri(column1: str, column2: str):
     # subject
@@ -58,11 +64,15 @@ def create_subject_uri(column1: str, column2: str):
     db_name1 = treat_sub_dbname(db_name1)
     db_name2 = treat_sub_dbname(db_name2)
     Interactor_ab = URIRef(
-            interactor_ab +
-            db_name1 +"_" +identifier1 +
-            "__" +
-            db_name2 +"_" +identifier2
-            )
+        interactor_ab
+        + db_name1
+        + "_"
+        + identifier1
+        + "__"
+        + db_name2
+        + "_"
+        + identifier2
+    )
     return Interactor_ab
 
 
@@ -80,9 +90,8 @@ def create_object_uri(column: str, db_list: dict):
         sys.exit()
 
 
-
 def except_columns(row):
-    except_list = [2,3,4,5,10,14]
+    except_list = [2, 3, 4, 5, 10, 14]
     for i in range(len(row)):
         if i in except_list:
             row[i] = ""
@@ -105,8 +114,12 @@ def create_ttl(dir_name, file_name, service):
     souce_db = URIRef("http://purl.org/dc/elements/1.1/source")
     has_interaction_id = URIRef("http://purl.org/dc/elements/1.1/identifier")
     organizm = URIRef("http://semanticscience.org/resource/SIO_000253")
-    has_interactorA = URIRef("http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A")
-    has_interactorB = URIRef("http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_B")
+    has_interactorA = URIRef(
+        "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A"
+    )
+    has_interactorB = URIRef(
+        "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_B"
+    )
 
     #############################
     # classes
@@ -131,7 +144,7 @@ def create_ttl(dir_name, file_name, service):
         for row in reader:
             db_list[row[0]] = rdflib.Namespace(row[1])
             if " " in row[0]:
-                db_list[row[0].replace(" ","")] = rdflib.Namespace(row[1])
+                db_list[row[0].replace(" ", "")] = rdflib.Namespace(row[1])
 
     with open(dir_name) as f1:
         """column number
@@ -155,10 +168,18 @@ def create_ttl(dir_name, file_name, service):
         next(reader)
         for row_bef in reader:
             row = except_columns(row_bef)
-            if row[0] == "-" or row[1] == "-" or row[0] == "" or row[1] == ""\
-                    or "Missing" in row[0] or "Missing" in row[1]\
-                    or "unassigned" in row[8]\
-                    or "REACT_" in row[13]:
+            if (
+                row[0] == "-"
+                or row[1] == "-"
+                or row[0] == ""
+                or row[1] == ""
+                or "Missing" in row[0]
+                or "Missing" in row[1]
+                or "unassigned" in row[8]
+                or "REACT_" in row[13]
+            ):
+                continue
+            if "psi-mi" in row[8] or "psi-mi" in row[13]:
                 continue
 
             Interactor_ab = create_subject_uri(row[0], row[1])
@@ -176,7 +197,7 @@ def create_ttl(dir_name, file_name, service):
                 g.add((Interactor_ab, detected_by, Detection_method))
 
             if row[8] != "-" and row[8] != "":
-                if(re.search(r"\d{2}\.\d{4}\/\d{4}\.\d{2}\.\d{2}\.\d{6}", row[8])):
+                if re.search(r"\d{2}\.\d{4}\/\d{4}\.\d{2}\.\d{2}\.\d{6}", row[8]):
                     row[8] = row[8].replace("pubmed", "doi")
                 Publication_id = create_object_uri(row[8], db_list)
                 g.add((Interactor_ab, pub_id, Publication_id))
@@ -208,7 +229,6 @@ def create_ttl(dir_name, file_name, service):
                 g.add((Interactor_ab, has_interaction_id, Interaction_id))
                 # g.add((Interaction_id, RDF.type, interaction_id))
 
-
         g.serialize(
             destination="turtle/" + service + "/" + file_name + ".ttl",
             format="turtle",
@@ -228,7 +248,7 @@ def main(dir_name: str):
             pass
         dir_list = glob.glob(dir_name + service + "/*.tsv", recursive=True)
         for i in range(len(dir_list)):
-            print("... create ttl from", dir_list[i], "\t", i+1, "/", len(dir_list))
+            print("... create ttl from", dir_list[i], "\t", i + 1, "/", len(dir_list))
             create_ttl(dir_list[i], service + str(i), service)
     # ファイルをコピー
     dir_list = glob.glob("turtle/**/*.ttl", recursive=True)

@@ -3,9 +3,11 @@ import os
 import re
 import shutil
 import sys
-
+# Ignore artifacts:
 sys.path.append("/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC")
+
 from mylib import general_method as gm
+
 
 
 def toURI(text: str, prefix):

@@ -1,15 +1,15 @@
 import csv
+import glob
 import os
 import re
 import shutil
 import sys
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
-import glob
 from copy import copy
 
 from mylib import general_method as gm
 from mylib.psiquic_class import PQdata, PQdataList
+
+sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
 
 
 def get_target_id(column_data: str, db_name: str):
@@ -73,21 +73,25 @@ def list2tsv(data: list):
             result += data[i]
     return result
 
+
 def except_columns(row):
-    except_list = [2,3,4,5, 7,10,14]
+    except_list = [2, 3, 4, 5, 7, 10, 14]
     for i in range(len(row)):
         if i in except_list:
             row[i] = ""
     return row
 
+
 # barで分けて展開したものをファイルの保存
+
+
 def expansion_tsv(dirname):
     services_list = gm.list_serveice()
     in_dir = "data/"
     out_dir = "expdata/"
     for service in services_list:
         try:
-            shutil.rmtree(dirname + out_dir +  service)
+            shutil.rmtree(dirname + out_dir + service)
         except:
             pass
         try:
@@ -96,16 +100,22 @@ def expansion_tsv(dirname):
             pass
         dir_list = glob.glob(dirname + in_dir + service + "/*.tsv", recursive=True)
         for i in range(len(dir_list)):
-            print("... expantion tsv :", dir_list[i], "\t", i+1, "/", len(dir_list))
+            print("... expantion tsv :", dir_list[i], "\t", i + 1, "/", len(dir_list))
             with open(dir_list[i]) as f1:
                 reader = csv.reader(f1, delimiter="\t")
-                with open(dirname + out_dir +  service + "/" + dir_list[i].split("/")[-1], mode='w') as f:
+                with open(
+                    dirname + out_dir + service + "/" + dir_list[i].split("/")[-1],
+                    mode="w",
+                ) as f:
                     f.write("")
                 for row_bef in reader:
                     row_bef = except_columns(row_bef)
                     row_list = expansion_tsv_row([row_bef])
                     # print("------------------------------\n")
-                    with open(dirname + out_dir +  service + "/" + dir_list[i].split("/")[-1], mode='a') as f:
+                    with open(
+                        dirname + out_dir + service + "/" + dir_list[i].split("/")[-1],
+                        mode="a",
+                    ) as f:
                         for row in row_list:
                             f.write("\t".join(row) + "\n")
 

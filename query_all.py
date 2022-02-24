@@ -1,10 +1,9 @@
-from datetime import datetime
-import shutil
 import os
+import shutil
 import xml.etree.ElementTree as ET
+from datetime import datetime
 from glob import glob
 from urllib.request import urlopen
-
 
 # ------------------ FUNCTIONS ------------------
 
@@ -122,7 +121,7 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
                 + "&maxResults="
                 + str(maxResults)
             )
-            # print("URL: " + psicquicUrl)
+            print("URL: " + psicquicUrl)
             print_text = (
                 str(datetime.now())
                 + "\t>\tloading "
@@ -158,28 +157,28 @@ def queryPsicquic(service_name, psicquicRestUrl, query, offset, maxResults, init
 def main(query):
     services = readActiveServicesFromRegistry()
     services_list = [
-        "BioGrid",
-        "bhf-ucl",
-        "ChEMBL",
+        # "BioGrid",
+        # "bhf-ucl",
+        # "ChEMBL",
         # "DIP",
-        "HPIDb",
-        "IntAct",
-        "IMEx",
-        "mentha",
-        "MPIDB",
-        "iRefIndex",
-        "MatrixDB",
+        # "HPIDb",
+        # "IntAct",
+        # "IMEx",
+        # "mentha",
+        # "MPIDB",
+        # "iRefIndex",
+        # "MatrixDB",
         "MINT",
-        "Reactome",
-        "Reactome-FIs",
-        "EBI-GOA-miRNA",
-        "UniProt",
-        "MBInfo",
-        "BindingDB",
-        "VirHostNet",
-        "BAR",
-        "EBI-GOA-nonIntAct",
-        "tfact2gene",
+        # "Reactome",
+        # "Reactome-FIs",
+        # "EBI-GOA-miRNA",
+        # "UniProt",
+        # "MBInfo",
+        # "BindingDB",
+        # "VirHostNet",
+        # "BAR",
+        # "EBI-GOA-nonIntAct",
+        # "tfact2gene",
     ]
     import os
 
