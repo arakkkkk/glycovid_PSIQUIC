@@ -28,7 +28,7 @@ dip	http://rdf.glycoinfo.org/dbid/dip/	DIP(\:)?\-\d{1,}[ENXS]
 empiar	http://rdf.glycoinfo.org/dbid/empiar/	EMPAIR-\d{5}
 matrixdb	https://bioregistry.io/reference/matrixdb:	.+
 mpidb	http://rdf.glycoinfo.org/dbid/mpid/	((\d+)|(MPIDB-INT-\d{3,4}))
-rigid	http://rdf.glycoinfo.org/dbid/rigid/	[A-Za-z0-9\+]+
+rigid	http://rdf.glycoinfo.org/dbid/rigid/	.+
 hprd	http://rdf.glycoinfo.org/dbid/hprd/	\d+
 reactome	http://rdf.glycoinfo.org/dbid/reactome/	(R-[A-Z]{3}-\d+)(?:\.\d+)?
 virhostnet-rid	http://rdf.glycoinfo.org/dbid/virhostnet-rid/	\d{3,6}

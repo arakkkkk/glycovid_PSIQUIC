@@ -3,11 +3,11 @@ import os
 import re
 import shutil
 import sys
+
 # Ignore artifacts:
 sys.path.append("/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC")
 
 from mylib import general_method as gm
-
 
 
 def toURI(text: str, prefix):
@@ -83,7 +83,7 @@ def create_owl(file: str, out_dir: str, s: str, po: dict) -> None:
         owl_list.append("")
         owl_list.append("")
         # break
-    with open("owl/2_8/psicquic_temp_2_8.owl") as f:
+    with open("owl/03_03/psicquic_temp_03_03.owl") as f:
         temp_text = f.read()
     with open(
         out_dir + "/" + file.split("/")[-1].split(".")[0] + ".owl.ttl", mode="w"
@@ -162,18 +162,18 @@ def main(dirname: str, test: bool):
         os.mkdir(dirname + "/all")
     except:
         pass
-    dir_list = glob.glob("owl/2_8/data/**/*.owl.ttl", recursive=True)
+    dir_list = glob.glob("owl/03_03/data/**/*.owl.ttl", recursive=True)
     for i in range(len(dir_list)):
         bef_dir = dir_list[i]
         if "all" in bef_dir:
             continue
-        aft_dir = re.sub(r"owl/2_8/data/[^/]+", "owl/2_8/data/all", dir_list[i])
+        aft_dir = re.sub(r"owl/03_03/data/[^/]+", "owl/03_03/data/all", dir_list[i])
         print("copy", bef_dir, "to", aft_dir)
         shutil.copy(bef_dir, aft_dir)
         # return
 
 
 if __name__ == "__main__":
-    dirname = "owl/2_8/data"
+    dirname = "owl/03_03/data"
     # main(dirname, True)
     main(dirname, False)

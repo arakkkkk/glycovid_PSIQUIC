@@ -5,6 +5,7 @@ import re
 import shutil
 import sys
 from copy import copy
+from urllib.parse import quote
 
 import rdflib
 from rdflib import Graph, Literal, Namespace, URIRef
@@ -45,6 +46,7 @@ def treat_data(column_data: str):
     # 余分な文字列データの消去
     # identifier = re.sub(r"\(.*\)", "", identifier)
     # print(column_data)
+    identifier = quote(identifier, safe="")
     return db_name.lower(), identifier
 
 
