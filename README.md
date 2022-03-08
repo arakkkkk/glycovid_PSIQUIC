@@ -75,25 +75,22 @@ interactiontype_except_list = [
 [Flowchart Maker & Online Diagram Software](https://app.diagrams.net/#G1Vdkum5NCG3MsLvJ7HJ6PDXt6iG7PCHaw)
 
 ```jsx
-@prefix ns1: <http://www.biopax.org/release/biopax-level3.owl#> .
-@prefix ns2: <http://www.linkedmodel.org/schema/vaem#> .
-@prefix ns3: <http://purl.obolibrary.org/obo/> .
-@prefix ns4: <http://rdf.glycoinfo.org/ontology/interaction#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix ns1: <http://purl.obolibrary.org/obo/> .
+@prefix ns2: <http://rdf.glycoinfo.org/PSICQUIC/Ontology#> .
+@prefix ns3: <http://www.biopax.org/release/biopax-level3.owl#> .
+@prefix ns4: <http://semanticscience.org/resource/> .
 @prefix ns5: <http://www.bioassayontology.org/bao#> .
-@prefix ns6: <http://purl.org/dc/elements/1.1/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://identifiers.org/matrixdb.association:intact_EBI-7460430__uniprotkb_P53667> ns3:IAO_0000119 <https://identifiers.org/pubmed/15660133> ;
-    ns3:INO_0000154 ns3:MI_0915 ;
-    ns3:id <https://identifiers.org/minT/MINT-8220587> ;
-    ns6:source ns3:MI_0471 ;
-    ns4:has_interactor_A <https://identifiers.org/intact/EBI-7460430> ;
-    ns4:has_interactor_B <https://identifiers.org/uniprot/P53667> ;
-    ns5:BAO_0000383 <https://identifiers.org/minT/MINT-8220587> ;
-    ns1:author "Soosairajahetal.(2005)"^^xsd:string ;
-    ns1:interactionType ns3:MI_0915 ;
-    ns1:organism <https://identifiers.org/taxonomy/9606> ;
-    ns2:hasIdentifier <https://identifiers.org/minT/MINT-8220587> .
+<http://rdf.glycoinfo.org/matrixdb.association:chembl-target_CHEMBL2107838__uniprotkb_P35318%23PRO_0000000963> ns1:IAO_0000119 <http://rdf.glycoinfo.org/dbid/imex/IM-22908> ;
+    ns1:INO_0000154 ns1:MI_0915 ;
+    dc:identifier <http://rdf.glycoinfo.org/dbid/imex/IM-22908-12> ;
+    dc:source ns1:MI_0469 ;
+    ns2:has_interactor_A <http://rdf.glycoinfo.org/dbid/chembl.target/CHEMBL2107838> ;
+    ns2:has_interactor_B <http://rdf.glycoinfo.org/dbid/uniprot/P35318%23PRO_0000000963> ;
+    ns4:SIO_000253 <http://rdf.glycoinfo.org/dbid/taxonomy/9606> ;
+    ns5:BAO_0002875 ns1:MI_0107 ;
+    ns3:interactionType ns1:MI_0915 .
 ```
 
 - subject: interactor_ab
