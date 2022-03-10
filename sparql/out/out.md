@@ -35,85 +35,13 @@ WHERE {
       {
         "predicate": {
           "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+          "value": "http://www.w3.org/2002/07/owl#versionIRI"
         }
       },
       {
         "predicate": {
           "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/IAO_0006012"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/2000/01/rdf-schema#label"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#equivalentClass"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/IAO_0000119"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/INO_0000154"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://purl.org/dc/elements/1.1/identifier"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://purl.org/dc/elements/1.1/source"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_B"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://semanticscience.org/resource/SIO_000253"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.bioassayontology.org/bao#BAO_0002875"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.biopax.org/release/biopax-level3.owl#interactionType"
+          "value": "http://www.w3.org/2002/07/owl#imports"
         }
       },
       {
@@ -131,13 +59,31 @@ WHERE {
       {
         "predicate": {
           "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#versionIRI"
+          "value": "http://www.w3.org/2000/01/rdf-schema#label"
         }
       },
       {
         "predicate": {
           "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#imports"
+          "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+        }
+      },
+      {
+        "predicate": {
+          "type": "uri",
+          "value": "http://purl.obolibrary.org/obo/IAO_0006012"
+        }
+      },
+      {
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/2002/07/owl#equivalentClass"
+        }
+      },
+      {
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
         }
       },
       {
@@ -168,6 +114,60 @@ WHERE {
         "predicate": {
           "type": "uri",
           "value": "http://www.w3.org/2002/07/owl#intersectionOf"
+        }
+      },
+      {
+        "predicate": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A"
+        }
+      },
+      {
+        "predicate": {
+          "type": "uri",
+          "value": "http://purl.obolibrary.org/obo/IAO_0000119"
+        }
+      },
+      {
+        "predicate": {
+          "type": "uri",
+          "value": "http://purl.org/dc/elements/1.1/identifier"
+        }
+      },
+      {
+        "predicate": {
+          "type": "uri",
+          "value": "http://purl.obolibrary.org/obo/INO_0000154"
+        }
+      },
+      {
+        "predicate": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_B"
+        }
+      },
+      {
+        "predicate": {
+          "type": "uri",
+          "value": "http://semanticscience.org/resource/SIO_000253"
+        }
+      },
+      {
+        "predicate": {
+          "type": "uri",
+          "value": "http://purl.org/dc/elements/1.1/source"
+        }
+      },
+      {
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.bioassayontology.org/bao#BAO_0002875"
+        }
+      },
+      {
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.biopax.org/release/biopax-level3.owl#interactionType"
         }
       }
     ]
@@ -206,36 +206,6 @@ WHERE {
       {
         "class": {
           "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/EUPATH_0000591"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://biomodels.net/SBO/SBO_0000344"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://biomodels.net/SBO/SBO_0000241"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/NCIT_C93638"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#InteractionId"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
           "value": "http://www.w3.org/2002/07/owl#Ontology"
         }
       },
@@ -243,6 +213,12 @@ WHERE {
         "class": {
           "type": "uri",
           "value": "http://www.w3.org/2002/07/owl#AnnotationProperty"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://purl.obolibrary.org/obo/NCIT_C93638"
         }
       },
       {
@@ -260,7 +236,25 @@ WHERE {
       {
         "class": {
           "type": "uri",
+          "value": "http://biomodels.net/SBO/SBO_0000344"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
           "value": "http://www.w3.org/2002/07/owl#ObjectProperty"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://biomodels.net/SBO/SBO_0000241"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://purl.obolibrary.org/obo/EUPATH_0000591"
         }
       },
       {
@@ -273,6 +267,12 @@ WHERE {
         "class": {
           "type": "uri",
           "value": "http://www.w3.org/2002/07/owl#Restriction"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#InteractionId"
         }
       },
       {
@@ -318,11 +318,11 @@ WHERE {
       {
         "p": {
           "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A"
         },
         "o": {
           "type": "uri",
-          "value": "http://biomodels.net/SBO/SBO_0000344"
+          "value": "http://rdf.glycoinfo.org/dbid/CHEBI/241349"
         }
       },
       {
@@ -333,6 +333,16 @@ WHERE {
         "o": {
           "type": "uri",
           "value": "http://www.biopax.org/release/biopax-level3.owl#MolecularInteraction"
+        }
+      },
+      {
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "o": {
+          "type": "uri",
+          "value": "http://biomodels.net/SBO/SBO_0000344"
         }
       },
       {
@@ -368,26 +378,6 @@ WHERE {
       {
         "p": {
           "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/INO_0000154"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/MI_0407"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/INO_0000154"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/MI_0914"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
           "value": "http://purl.org/dc/elements/1.1/identifier"
         },
         "o": {
@@ -418,31 +408,21 @@ WHERE {
       {
         "p": {
           "type": "uri",
-          "value": "http://purl.org/dc/elements/1.1/source"
+          "value": "http://purl.obolibrary.org/obo/INO_0000154"
         },
         "o": {
           "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/MI_1332"
+          "value": "http://purl.obolibrary.org/obo/MI_0407"
         }
       },
       {
         "p": {
           "type": "uri",
-          "value": "http://purl.org/dc/elements/1.1/source"
+          "value": "http://purl.obolibrary.org/obo/INO_0000154"
         },
         "o": {
           "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/MI_0486"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/dbid/CHEBI/241349"
+          "value": "http://purl.obolibrary.org/obo/MI_0914"
         }
       },
       {
@@ -463,6 +443,26 @@ WHERE {
         "o": {
           "type": "uri",
           "value": "http://semanticscience.org/resource/SIO_000559"
+        }
+      },
+      {
+        "p": {
+          "type": "uri",
+          "value": "http://purl.org/dc/elements/1.1/source"
+        },
+        "o": {
+          "type": "uri",
+          "value": "http://purl.obolibrary.org/obo/MI_1332"
+        }
+      },
+      {
+        "p": {
+          "type": "uri",
+          "value": "http://purl.org/dc/elements/1.1/source"
+        },
+        "o": {
+          "type": "uri",
+          "value": "http://purl.obolibrary.org/obo/MI_0486"
         }
       },
       {
@@ -545,12 +545,12 @@ WHERE {
       {
         "class": {
           "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/EUPATH_0000591"
+          "value": "http://purl.obolibrary.org/obo/NCIT_C93638"
         },
         "label": {
           "type": "literal",
-          "xml:lang": "en",
-          "value": "host organism"
+          "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "value": "Publication Identifier"
         }
       },
       {
@@ -568,18 +568,12 @@ WHERE {
       {
         "class": {
           "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/NCIT_C93638"
+          "value": "http://purl.obolibrary.org/obo/EUPATH_0000591"
         },
         "label": {
           "type": "literal",
-          "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
-          "value": "Publication Identifier"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#InteractionId"
+          "xml:lang": "en",
+          "value": "host organism"
         }
       },
       {
@@ -607,6 +601,12 @@ WHERE {
         "class": {
           "type": "bnode",
           "value": "b0"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#InteractionId"
         }
       },
       {
@@ -950,6 +950,992 @@ WHERE {
           "type": "bnode",
           "value": "b57"
         }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b58"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b59"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b60"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b61"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b62"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b63"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b64"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b65"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b66"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b67"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b68"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b69"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b70"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b71"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b72"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b73"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b74"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b75"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b76"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b77"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b78"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b79"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b80"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b81"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b82"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b83"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b84"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b85"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b86"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b87"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b88"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b89"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b90"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b91"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b92"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b93"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b94"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b95"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b96"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b97"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b98"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b99"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b100"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b101"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b102"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b103"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b104"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b105"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b106"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b107"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b108"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b109"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b110"
+        }
+      },
+      {
+        "class": {
+          "type": "bnode",
+          "value": "b111"
+        }
+      }
+    ]
+  }
+}
+```
+</details>
+
+
+
+
+# list_object_heads
+### SPARQL query
+```
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+SELECT ?head_o (count(?head_o) as ?count)
+WHERE {
+  ?s ?p ?o.
+  MINUS {
+      ?s a ?o .
+  }
+  BIND(REPLACE(str(?o), "/[^/]+$", "", "i") AS ?head_o)
+}
+group by ?head_o
+```
+### RESULTS
+<details>
+<summary>Toggle</summary>
+
+```
+{
+  "head": {
+    "vars": [
+      "head_o",
+      "count"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "Publication Identifier"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "An organism that has host role"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/rigid"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "310669"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/emdb"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "303"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/CHEBI"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "157938"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/pubmed"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2037804"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/ntnu"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "89322"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/rnacentral"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1602"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/ensemblgenomes"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/taxonomy"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1580903"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/chembl.target"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "6"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "organism"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/uniprot"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2369714"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/biogrid"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "775636"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://www.bioassayontosiyousuru.org"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "136"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/interpro"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "10"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/signor"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "27"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/ensembl"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "41877"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/mint"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "39224"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/doi"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "73854"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "https://bioregistry.io/reference"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "483"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/rhea"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "5"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "host organism"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "0"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/ncbigene"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "637222"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/intact"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "253255"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "host role"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/intenz"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "12"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/mpid"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "18"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "yes"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://www.w3.org/1999/02"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "112"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/refseq"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "105860"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/imex"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "945398"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/virhostnet-nrid"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "31536"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/rogid"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1776"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/complexportal"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/pmc"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1841"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/empiar"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/OMIM"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "80"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://protege.stanford.edu/plugins/owl/dc"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://www.biopax.org/release"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://www.bioassayontology.org/bao"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://biomodels.net/SBO"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "7"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/efo"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "6"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/BTO"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/dip"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "9611"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "has role"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/insdc"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "75"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/reactome"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "86"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://purl.obolibrary.org/obo"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "8482115"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/pdb"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1734"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/chembl"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "904535"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/pride"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1445"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/dbid/complex"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "356"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/ontology"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://semanticscience.org/resource"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "11166"
+        }
+      },
+      {
+        "head_o": {
+          "type": "literal",
+          "value": "http://rdf.glycoinfo.org/PSICQUIC"
+        },
+        "count": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
       }
     ]
   }
@@ -987,7 +1973,7 @@ WHERE {
         "count": {
           "type": "literal",
           "datatype": "http://www.w3.org/2001/XMLSchema#integer",
-          "value": "30143644"
+          "value": "29665169"
         }
       }
     ]
@@ -1025,36 +2011,6 @@ WHERE {
       {
         "class": {
           "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/EUPATH_0000591"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://biomodels.net/SBO/SBO_0000344"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://biomodels.net/SBO/SBO_0000241"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/NCIT_C93638"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#InteractionId"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
           "value": "http://www.w3.org/2002/07/owl#Ontology"
         }
       },
@@ -1062,6 +2018,12 @@ WHERE {
         "class": {
           "type": "uri",
           "value": "http://www.w3.org/2002/07/owl#AnnotationProperty"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://purl.obolibrary.org/obo/NCIT_C93638"
         }
       },
       {
@@ -1079,7 +2041,25 @@ WHERE {
       {
         "class": {
           "type": "uri",
+          "value": "http://biomodels.net/SBO/SBO_0000344"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
           "value": "http://www.w3.org/2002/07/owl#ObjectProperty"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://biomodels.net/SBO/SBO_0000241"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://purl.obolibrary.org/obo/EUPATH_0000591"
         }
       },
       {
@@ -1092,6 +2072,12 @@ WHERE {
         "class": {
           "type": "uri",
           "value": "http://www.w3.org/2002/07/owl#Restriction"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#InteractionId"
         }
       },
       {

@@ -6,6 +6,7 @@ from SPARQLWrapper import JSON, SPARQLWrapper
 
 def sparql(endpoint: str, sparqlist_dir: str):
     sparql = SPARQLWrapper(endpoint)
+    sparql.endpoint.__add__("Jo")
     dir_list = glob(sparqlist_dir + "/**.txt", recursive=True)
     with open(sparqlist_dir + "/../out/out.md", "w") as f:
         f.write("")
@@ -33,21 +34,26 @@ def sparql(endpoint: str, sparqlist_dir: str):
                 f.write(json.dumps(results, indent=2) + "\n")
                 f.write("```\n")
                 f.write("</details>\n")
-            # for head in results["head"]["vars"]:
-            #     print("\t", head, end="")
-            # print()
-            # count = 0
-            # for row in results["results"]["bindings"]:
-            #     print(count, end="")
-            #     for key in row:
-            #         print("\t", row[key]["value"], end="")
-            #     print()
-            #     count += 1
+
+            for head in results["head"]["vars"]:
+                print("\t", head, end="")
+            print()
+            count = 0
+            for row in results["results"]["bindings"]:
+                print(count, end="")
+                for key in row:
+                    print("\t", row[key]["value"], end="")
+                print()
+                count += 1
         except Exception as e:
             print(e)
 
 
 if __name__ == "__main__":
-    endpoint = "http://localhost:3030/psicquic_2_15_22/sparql"
+    endpoint = "https://www.ebi.ac.uk/rdf/services/sparql"
+    endpoint = "http://localhost:3030/psicquic_03_10_22/query"
     sparqlist_dir = "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/sparqlist"
+    # sparqlist_dir = (
+    #     "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/_sparqlist"
+    # )
     sparql(endpoint, sparqlist_dir)

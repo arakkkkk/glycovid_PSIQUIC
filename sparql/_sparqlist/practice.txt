@@ -1,0 +1,7 @@
+prefix owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT DISTINCT ?subject ?p
+WHERE {
+  ?subject ?p <http://biomodels.net/SBO/SBO_0000344>
+}
+limit 20

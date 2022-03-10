@@ -9,7 +9,7 @@ from urllib.parse import quote
 
 import rdflib
 from rdflib import Graph, Literal, Namespace, URIRef
-from rdflib.namespace import RDFS, XSD
+from rdflib.namespace import FOAF, RDF, RDFS, XSD
 
 from mylib import general_method as gm
 from mylib.expansion_tsv import expansion_tsv_row
@@ -185,14 +185,14 @@ def create_ttl(dir_name, file_name, service):
                 continue
 
             Interactor_ab = create_subject_uri(row[0], row[1])
-            # g.add((Interactor_ab, RDF.type, molecular_interaction))
+            g.add((Interactor_ab, RDF.type, molecular_interaction))
 
             Interactor_a = create_object_uri(row[0], db_list)
             g.add((Interactor_ab, has_interactorA, Interactor_a))
-            # g.add((Interactor_a, RDF.type, functional_entiry))
+            g.add((Interactor_a, RDF.type, functional_entiry))
             Interactor_b = create_object_uri(row[1], db_list)
             g.add((Interactor_ab, has_interactorB, Interactor_b))
-            # g.add((Interactor_b, RDF.type, functional_entiry))
+            g.add((Interactor_b, RDF.type, functional_entiry))
 
             if row[6] != "-" and row[6] != "":
                 Detection_method = create_object_uri(row[6], db_list)
@@ -203,19 +203,19 @@ def create_ttl(dir_name, file_name, service):
                     row[8] = row[8].replace("pubmed", "doi")
                 Publication_id = create_object_uri(row[8], db_list)
                 g.add((Interactor_ab, pub_id, Publication_id))
-                # g.add((Publication_id, RDF.type, publication_identifier))
+                g.add((Publication_id, RDF.type, publication_identifier))
 
             if row[9] != "-" and row[9] != "":
                 Taxon_id = create_object_uri(row[9], db_list)
                 if re.search(r"taxid:\s?-1.+", row[9]):
                     g.add((Interactor_ab, organizm, in_vitro))
-                    # g.add((in_vitro, RDF.type, host_organism))
+                    g.add((in_vitro, RDF.type, host_organism))
                 elif re.search(r"taxid:\s?-2.+", row[9]):
                     g.add((Interactor_ab, organizm, chemical_synthesis))
-                    # g.add((chemical_synthesis, RDF.type, host_organism))
+                    g.add((chemical_synthesis, RDF.type, host_organism))
                 else:
                     g.add((Interactor_ab, organizm, Taxon_id))
-                    # g.add((Taxon_id, RDF.type, host_organism))
+                    g.add((Taxon_id, RDF.type, host_organism))
 
             if row[11] != "-" and row[11] != "":
                 Interaction_type = create_object_uri(row[11], db_list)
@@ -229,7 +229,7 @@ def create_ttl(dir_name, file_name, service):
             if row[13] != "-" and row[13] != "":
                 Interaction_id = create_object_uri(row[13], db_list)
                 g.add((Interactor_ab, has_interaction_id, Interaction_id))
-                # g.add((Interaction_id, RDF.type, interaction_id))
+                g.add((Interaction_id, RDF.type, interaction_id))
 
         g.serialize(
             destination="turtle/" + service + "/" + file_name + ".ttl",
