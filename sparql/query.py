@@ -50,10 +50,10 @@ def sparql(endpoint: str, sparqlist_dir: str):
 
 
 if __name__ == "__main__":
-    endpoint = "https://www.ebi.ac.uk/rdf/services/sparql"
     endpoint = "http://localhost:3030/psicquic_03_10_22/query"
-    sparqlist_dir = "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/sparqlist"
-    # sparqlist_dir = (
-    #     "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/_sparqlist"
-    # )
+    sparqlist_dir = (
+        # "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/sparqlist"
+        "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/sparqlist_glytoucan/"
+        # "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/_sparqlist"
+    )
     sparql(endpoint, sparqlist_dir)
