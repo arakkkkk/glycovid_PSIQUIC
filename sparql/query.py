@@ -5,10 +5,11 @@ from SPARQLWrapper import JSON, SPARQLWrapper
 
 
 def sparql(endpoint: str, sparqlist_dir: str):
+    outfile_name = sparqlist_dir.split("/")[-2]
     sparql = SPARQLWrapper(endpoint)
     sparql.endpoint.__add__("Jo")
     dir_list = glob(sparqlist_dir + "/**.txt", recursive=True)
-    with open(sparqlist_dir + "/../out/out.md", "w") as f:
+    with open(sparqlist_dir + "/../out/" + outfile_name + ".md", "w") as f:
         f.write("")
     for i in range(len(dir_list)):
         print(str(i + 1) + "/" + str(len(dir_list)), "\texecute: ", dir_list[i])
@@ -16,7 +17,7 @@ def sparql(endpoint: str, sparqlist_dir: str):
             query = f.read()
         sparql.setQuery(query)
         sparql.setReturnFormat(JSON)
-        with open(sparqlist_dir + "/../out/out.md", "a") as f:
+        with open(sparqlist_dir + "/../out/" + outfile_name + ".md", "a") as f:
             f.write("\n\n\n\n")
             f.write("# " + dir_list[i].split("/")[-1].split(".")[0] + "\n")
             f.write("### SPARQL query\n")
@@ -25,7 +26,7 @@ def sparql(endpoint: str, sparqlist_dir: str):
             f.write("```\n")
         try:
             results = sparql.queryAndConvert()
-            with open(sparqlist_dir + "/../out/out.md", "a") as f:
+            with open(sparqlist_dir + "/../out/" + outfile_name + ".md", "a") as f:
                 f.write("### RESULTS\n")
                 f.write("<details>\n")
                 f.write("<summary>Toggle</summary>\n")
@@ -53,7 +54,7 @@ if __name__ == "__main__":
     endpoint = "http://localhost:3030/psicquic_03_10_22/query"
     sparqlist_dir = (
         # "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/sparqlist"
-        "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/sparqlist_glytoucan/"
-        # "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/_sparqlist"
+        # "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/sparqlist_glytoucan/"
+        "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/_sparqlist"
     )
     sparql(endpoint, sparqlist_dir)
