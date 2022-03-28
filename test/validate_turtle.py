@@ -12,6 +12,9 @@ from mylib import general_method as gm
 def toURI(text: str, prefix) -> str:
     if text[0:1] == "<" and text[-1:] == ">":
         return text
+    # escape blank node
+    elif text == "[]":
+        return text
     else:
         for key in prefix:
             if re.match(r"^" + key, text):
@@ -70,6 +73,15 @@ def validate_turtle(file: str, uri_pattern: list, except_json: dict) -> None:
                     else:
                         uri = toURI(col[2], prefix)
                         validate_uri(uri, uri_pattern, except_json)
+                # has blank node
+                # example: ['', '[', 'a', 'ns5:SIO_000559', '],', '']
+                elif len(col) == 6:
+                    uri = toURI(col[3], prefix)
+                    validate_uri(uri, uri_pattern, except_json)
+                # example: ['', 'ns5:SIO_000253', '[', 'a', 'ns5:SIO_000559', ']', ',']
+                elif len(col) == 7:
+                    uri = toURI(col[4], prefix)
+                    validate_uri(uri, uri_pattern, except_json)
                 # po
                 elif len(col) == 3:
                     uri = toURI(col[1], prefix)
@@ -81,13 +93,16 @@ def get_except_json():
     return {
         # r"<http://rdf.glycoinfo.org/dbid/taxonomy/-2>": 0,
         # r"<http://rdf.glycoinfo.org/dbid/taxonomy/-1>": 0,
+        # r"<http://rdf.glycoinfo.org/dbid/taxonomy/-3>": 0,
         r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+%23PRO_\d+>": 0,
         r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+-\d+>": 0,
         # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/pubmed\/unassigned\d+>": 0,
         # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/rigid\/[A-Za-z0-9\+\/]+>": 0,
         # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/reactome\/REACT_\d{4}\.\d>": 0,
         # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/Missing-Uniprot-ID-for-[A-Z0-9]+>": 0,
-        # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/ensembl\/Missing-Ensembl-Gene-ID-for-[-@A-Z0-9]+>": 0
+        # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/ensembl\/Missing-Ensembl-Gene-ID-for-[-@A-Z0-9]+>": 0,
+        # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/ensembl\/Missing-Ensembl-Gene-ID-for-[-@A-Z0-9]+>": 0,
+        r"\[\]": 0,
     }
 
 

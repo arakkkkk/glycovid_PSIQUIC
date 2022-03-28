@@ -8,7 +8,7 @@ from copy import copy
 from urllib.parse import quote
 
 import rdflib
-from rdflib import Graph, Literal, Namespace, URIRef
+from rdflib import Graph, Literal, Namespace, URIRef, BNode
 from rdflib.namespace import FOAF, RDF, RDFS, XSD
 
 from mylib import general_method as gm
@@ -35,7 +35,7 @@ def treat_data(column_data: str):
     # MI_MI-0915　→　MI_0915
     identifier = re.sub(r"MI-(?P<id>(\d*))", r"\g<id>", identifier)
     # データベース固有のデータ変更
-    # P39060-PRO_000005794 → P39060#PRO_000005794
+    # P39060-PRO_000005794 → P39060#PRO_000005795
     if db_name == "uniprotkb":
         identifier = re.sub(
             r"(?P<uniprotid>(.+?))-PRO_(?P<proid>(.+))",
@@ -78,6 +78,7 @@ def create_subject_uri(column1: str, column2: str):
     return Interactor_ab
 
 
+# NOTE: カラムの文字列からuriを作成
 def create_object_uri(column: str, db_list: dict):
     #############################
     # uri definition
@@ -92,8 +93,9 @@ def create_object_uri(column: str, db_list: dict):
         sys.exit()
 
 
+# NOTE: 不必要なカラムデータを消去
 def except_columns(row):
-    except_list = [2, 3, 4, 5, 10, 14]
+    except_list = [2, 3, 4, 5, 14]
     for i in range(len(row)):
         if i in except_list:
             row[i] = ""
@@ -133,6 +135,7 @@ def create_ttl(dir_name, file_name, service):
     host_organism = URIRef("http://purl.obolibrary.org/obo/EUPATH_0000591")
     in_vitro = URIRef("http://www.bioassayontosiyousuru.org/bao#BAO_0020008")
     chemical_synthesis = URIRef("http://semanticscience.org/resource/SIO_000559")
+    unidentified = URIRef("http://purl.bioontology.org/ontology/SNOMEDCT/69910005")
 
     ############################
     # code
@@ -208,13 +211,47 @@ def create_ttl(dir_name, file_name, service):
             if row[9] != "-" and row[9] != "":
                 Taxon_id = create_object_uri(row[9], db_list)
                 if re.search(r"taxid:\s?-1.+", row[9]):
-                    g.add((Interactor_ab, organizm, in_vitro))
-                    g.add((in_vitro, RDF.type, host_organism))
+                    blanck_node = BNode()
+                    g.add((Interactor_ab, organizm, blanck_node))
+                    g.add((blanck_node, RDF.type, in_vitro))
                 elif re.search(r"taxid:\s?-2.+", row[9]):
-                    g.add((Interactor_ab, organizm, chemical_synthesis))
-                    g.add((chemical_synthesis, RDF.type, host_organism))
+                    blanck_node = BNode()
+                    g.add((Interactor_ab, organizm, blanck_node))
+                    g.add((blanck_node, RDF.type, chemical_synthesis))
                 else:
                     g.add((Interactor_ab, organizm, Taxon_id))
+                    g.add((Taxon_id, RDF.type, host_organism))
+
+            if row[9] != "-" and row[9] != "":
+                Taxon_id = create_object_uri(row[9], db_list)
+                if re.search(r"taxid:\s?-1.+", row[9]):
+                    blanck_node = BNode()
+                    g.add((Interactor_a, organizm, blanck_node))
+                    g.add((blanck_node, RDF.type, in_vitro))
+                elif re.search(r"taxid:\s?-2.+", row[9]):
+                    blanck_node = BNode()
+                    g.add((Interactor_a, organizm, blanck_node))
+                    g.add((blanck_node, RDF.type, chemical_synthesis))
+                else:
+                    g.add((Interactor_a, organizm, Taxon_id))
+                    g.add((Taxon_id, RDF.type, host_organism))
+
+            if row[10] != "-" and row[10] != "":
+                Taxon_id = create_object_uri(row[10], db_list)
+                if re.search(r"taxid:\s?-1.+", row[10]):
+                    blanck_node = BNode()
+                    g.add((Interactor_a, organizm, blanck_node))
+                    g.add((blanck_node, RDF.type, in_vitro))
+                elif re.search(r"taxid:\s?-2.+", row[10]):
+                    blanck_node = BNode()
+                    g.add((Interactor_a, organizm, blanck_node))
+                    g.add((blanck_node, RDF.type, chemical_synthesis))
+                elif re.search(r"taxid:\s?-3.+", row[10]):
+                    blanck_node = BNode()
+                    g.add((Interactor_a, organizm, blanck_node))
+                    g.add((blanck_node, RDF.type, unidentified))
+                else:
+                    g.add((Interactor_a, organizm, Taxon_id))
                     g.add((Taxon_id, RDF.type, host_organism))
 
             if row[11] != "-" and row[11] != "":
