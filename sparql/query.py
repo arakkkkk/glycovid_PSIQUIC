@@ -8,7 +8,7 @@ def sparql(endpoint: str, sparqlist_dir: str):
     outfile_name = sparqlist_dir.split("/")[-2]
     sparql = SPARQLWrapper(endpoint)
     sparql.endpoint.__add__("Jo")
-    dir_list = glob(sparqlist_dir + "/**.txt", recursive=True)
+    dir_list = glob(sparqlist_dir + "/**.rq", recursive=True)
     with open(sparqlist_dir + "/../out/" + outfile_name + ".md", "w") as f:
         f.write("")
     for i in range(len(dir_list)):
@@ -43,7 +43,7 @@ def sparql(endpoint: str, sparqlist_dir: str):
             for row in results["results"]["bindings"]:
                 print(count, end="")
                 for key in row:
-                    print("\t", row[key]["value"], end="")
+                    print("\t|", row[key]["value"], end="")
                 print()
                 count += 1
         except Exception as e:
@@ -52,9 +52,13 @@ def sparql(endpoint: str, sparqlist_dir: str):
 
 if __name__ == "__main__":
     endpoint = "http://localhost:3030/psicquic_03_10_22/query"
+    # endpoint = "http://150.37.132.67:3020/sparqlist/"
+    # endpoint = "https://endpoint.test.glycosmos.org/sparql"
+    # endpoint = "http://endpoint-proxy:3000/sparql"
     sparqlist_dir = (
         # "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/sparqlist"
         # "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/sparqlist_glytoucan/"
         "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/_sparqlist"
+        # "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/sparql/tmp"
     )
     sparql(endpoint, sparqlist_dir)

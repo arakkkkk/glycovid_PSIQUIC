@@ -240,18 +240,18 @@ def create_ttl(dir_name, file_name, service):
                 Taxon_id = create_object_uri(row[10], db_list)
                 if re.search(r"taxid:\s?-1.+", row[10]):
                     blanck_node = BNode()
-                    g.add((Interactor_a, organizm, blanck_node))
+                    g.add((Interactor_b, organizm, blanck_node))
                     g.add((blanck_node, RDF.type, in_vitro))
                 elif re.search(r"taxid:\s?-2.+", row[10]):
                     blanck_node = BNode()
-                    g.add((Interactor_a, organizm, blanck_node))
+                    g.add((Interactor_b, organizm, blanck_node))
                     g.add((blanck_node, RDF.type, chemical_synthesis))
-                elif re.search(r"taxid:\s?-3.+", row[10]):
+                elif re.search(r"taxid:\s?-3.*", row[10]):
                     blanck_node = BNode()
-                    g.add((Interactor_a, organizm, blanck_node))
+                    g.add((Interactor_b, organizm, blanck_node))
                     g.add((blanck_node, RDF.type, unidentified))
                 else:
-                    g.add((Interactor_a, organizm, Taxon_id))
+                    g.add((Interactor_b, organizm, Taxon_id))
                     g.add((Taxon_id, RDF.type, host_organism))
 
             if row[11] != "-" and row[11] != "":
