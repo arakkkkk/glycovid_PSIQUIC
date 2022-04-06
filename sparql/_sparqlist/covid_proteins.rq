@@ -5,7 +5,7 @@ PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
 PREFIX up: <http://purl.uniprot.org/core/>
 PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan#>
 
-SELECT ?child_taxon ?child_taxon_name ?interactor ?other_interactor_chebi_uri
+SELECT ?child_taxon ?interactor ?other_interactor_chebi_uri
 WHERE {
   # 1. コロナウイルスに関係するタンパク質一覧を取得
   bind(taxon:2697049 as ?taxon)
@@ -21,9 +21,6 @@ WHERE {
     ?child_taxon rdfs:subClassOf ?ancestor .
     ?child_taxon a up:Taxon .
     ?protein up:organism ?child_taxon.
-    optional {
-        ?child_taxon :scientificName ? ?child_taxon_name
-      }
     ?protein a up:Protein .
   }
 	# 取得したuniprotのうりをpsicquicで使用しているものに変換
