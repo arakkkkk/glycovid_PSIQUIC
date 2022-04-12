@@ -1,7 +1,6 @@
-prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-prefix owl: <http://www.w3.org/2002/07/owl#>
-
-SELECT DISTINCT ?predicate
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?p (count(?p) as ?count)
 WHERE {
-  ?subject ?predicate ?object
+  ?s ?p ?o
 }
+group by ?p
