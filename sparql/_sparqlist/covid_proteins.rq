@@ -29,7 +29,6 @@ WHERE {
   # 2. 取得したタンパク質が含まれるpsiquicのinteractionを検索
 	?interactor a <http://biomodels.net/SBO/SBO_0000241> .
 	FILTER(?interactor = ?covid_uniprot_uri)
-
   {
 		?interaction <http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A> ?interactor .
 		?interaction <http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_B> ?other_interactor .
