@@ -2,972 +2,29 @@
 
 
 
-# list_propaties
-### SPARQL query
-```
-prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-prefix owl: <http://www.w3.org/2002/07/owl#>
-
-SELECT DISTINCT ?predicate
-WHERE {
-  ?subject ?predicate ?object
-}
-```
-### RESULTS
-<details>
-<summary>Toggle</summary>
-
-```
-{
-  "head": {
-    "vars": [
-      "predicate"
-    ]
-  },
-  "results": {
-    "bindings": [
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/IAO_0006012"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/2000/01/rdf-schema#label"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#equivalentClass"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/IAO_0000119"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/INO_0000154"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://purl.org/dc/elements/1.1/identifier"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://purl.org/dc/elements/1.1/source"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_B"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://semanticscience.org/resource/SIO_000253"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.bioassayontology.org/bao#BAO_0002875"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.biopax.org/release/biopax-level3.owl#interactionType"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/2000/01/rdf-schema#range"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/2000/01/rdf-schema#domain"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#versionIRI"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#imports"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#onProperty"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#someValuesFrom"
-        }
-      },
-      {
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#intersectionOf"
-        }
-      }
-    ]
-  }
-}
-```
-</details>
-
-
-
-
-# list_classes
-### SPARQL query
-```
-prefix owl: <http://www.w3.org/2002/07/owl#>
-prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT DISTINCT ?class
-WHERE {
-  ?s a ?class.
-}
-```
-### RESULTS
-<details>
-<summary>Toggle</summary>
-
-```
-{
-  "head": {
-    "vars": [
-      "class"
-    ]
-  },
-  "results": {
-    "bindings": [
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/EUPATH_0000591"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://biomodels.net/SBO/SBO_0000344"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://biomodels.net/SBO/SBO_0000241"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/NCIT_C93638"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#InteractionId"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#Ontology"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#AnnotationProperty"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://www.biopax.org/release/biopax-level3.owl#MolecularInteraction"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/ontology/interaction#InteractionId"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#ObjectProperty"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#Class"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#Restriction"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#NamedIndividual"
-        }
-      }
-    ]
-  }
-}
-```
-</details>
-
-
-
-
-# sample_spo
-### SPARQL query
-```
-prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-prefix owl: <http://www.w3.org/2002/07/owl#>
-
-SELECT ?p ?o
-WHERE {
-  <http://rdf.glycoinfo.org/matrixdb.association:chebi_241349__uniprotkb_P02649> ?p ?o
-}
-```
-### RESULTS
-<details>
-<summary>Toggle</summary>
-
-```
-{
-  "head": {
-    "vars": [
-      "p",
-      "o"
-    ]
-  },
-  "results": {
-    "bindings": [
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://biomodels.net/SBO/SBO_0000344"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://www.biopax.org/release/biopax-level3.owl#MolecularInteraction"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#NamedIndividual"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/IAO_0000119"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/dbid/pubmed/12950167"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/IAO_0000119"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/dbid/imex/IM-27037"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/INO_0000154"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/MI_0407"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/INO_0000154"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/MI_0914"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://purl.org/dc/elements/1.1/identifier"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/dbid/imex/IM-22103-3"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://purl.org/dc/elements/1.1/identifier"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/dbid/imex/IM-27037-11"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://purl.org/dc/elements/1.1/identifier"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/dbid/imex/IM-27037-15"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://purl.org/dc/elements/1.1/source"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/MI_1332"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://purl.org/dc/elements/1.1/source"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/MI_0486"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/dbid/CHEBI/241349"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_B"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/dbid/uniprot/P02649"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://semanticscience.org/resource/SIO_000253"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://semanticscience.org/resource/SIO_000559"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://www.bioassayontology.org/bao#BAO_0002875"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/MI_0400"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://www.bioassayontology.org/bao#BAO_0002875"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/MI_0096"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://www.biopax.org/release/biopax-level3.owl#interactionType"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/MI_0407"
-        }
-      },
-      {
-        "p": {
-          "type": "uri",
-          "value": "http://www.biopax.org/release/biopax-level3.owl#interactionType"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/MI_0914"
-        }
-      }
-    ]
-  }
-}
-```
-</details>
-
-
-
-
-# selection_of_classes
-### SPARQL query
-```
-prefix owl: <http://www.w3.org/2002/07/owl#>
-prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT DISTINCT ?class ?label ?description
-WHERE {
-  ?class a owl:Class.
-  OPTIONAL { ?class rdfs:label ?label}
-  OPTIONAL { ?class rdfs:comment ?description}
-}
-```
-### RESULTS
-<details>
-<summary>Toggle</summary>
-
-```
-{
-  "head": {
-    "vars": [
-      "class",
-      "label",
-      "description"
-    ]
-  },
-  "results": {
-    "bindings": [
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/EUPATH_0000591"
-        },
-        "label": {
-          "type": "literal",
-          "xml:lang": "en",
-          "value": "host organism"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://biomodels.net/SBO/SBO_0000344"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://biomodels.net/SBO/SBO_0000241"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/NCIT_C93638"
-        },
-        "label": {
-          "type": "literal",
-          "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
-          "value": "Publication Identifier"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#InteractionId"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/OBI_0100026"
-        },
-        "label": {
-          "type": "literal",
-          "xml:lang": "en",
-          "value": "organism"
-        }
-      },
-      {
-        "class": {
-          "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/OBI_0000725"
-        },
-        "label": {
-          "type": "literal",
-          "value": "host role"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b0"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b1"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b2"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b3"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b4"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b5"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b6"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b7"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b8"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b9"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b10"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b11"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b12"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b13"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b14"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b15"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b16"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b17"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b18"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b19"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b20"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b21"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b22"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b23"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b24"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b25"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b26"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b27"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b28"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b29"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b30"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b31"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b32"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b33"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b34"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b35"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b36"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b37"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b38"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b39"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b40"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b41"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b42"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b43"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b44"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b45"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b46"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b47"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b48"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b49"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b50"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b51"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b52"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b53"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b54"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b55"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b56"
-        }
-      },
-      {
-        "class": {
-          "type": "bnode",
-          "value": "b57"
-        }
-      }
-    ]
-  }
-}
-```
-</details>
-
-
-
-
-# count_subject
+# query__psicquicinteractor_by_chebiid
 ### SPARQL query
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT (COUNT(?s) AS ?count)
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX chebi: <https://www.ebi.ac.uk/rdf/services/sparql>
+PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan#>
+SELECT ?interaction ?chebi_id
+
 WHERE {
-  ?s ?p ?o
+  BIND("chebi" as ?database)
+  BIND("157592" as ?id)
+
+  ?interaction a <http://biomodels.net/SBO/SBO_0000344> .
+  BIND(?database + "_" + ?id as ?interactor)
+  FILTER CONTAINS (str(?interaction), ?interactor)
+
+  ?interaction ?predicate ?object
+
+  FILTER CONTAINS (str(?object), "http://rdf.glycoinfo.org/dbid/CHEBI/")
+
+  BIND(REPLACE(str(?object), "http://rdf.glycoinfo.org/dbid/CHEBI/", "", "i") AS ?chebi_id)
 }
 ```
 ### RESULTS
@@ -978,16 +35,30 @@ WHERE {
 {
   "head": {
     "vars": [
-      "count"
+      "interaction",
+      "chebi_id"
     ]
   },
   "results": {
     "bindings": [
       {
-        "count": {
+        "interaction": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/matrixdb.association:chebi_157592__chembl_CHEMBL228"
+        },
+        "chebi_id": {
           "type": "literal",
-          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
-          "value": "30143644"
+          "value": "157592"
+        }
+      },
+      {
+        "interaction": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/matrixdb.association:chebi_157592__chembl_CHEMBL238"
+        },
+        "chebi_id": {
+          "type": "literal",
+          "value": "157592"
         }
       }
     ]
@@ -999,14 +70,34 @@ WHERE {
 
 
 
-# list_class
+# query_glytoucan_by_psicquicinteractor
 ### SPARQL query
 ```
-prefix owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX chebi: <https://www.ebi.ac.uk/rdf/services/sparql>
+PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan#>
+SELECT ?interaction ?glytoucan_url ?chebi_uri
 
-SELECT DISTINCT ?class
 WHERE {
-  ?subject a ?class
+  BIND("chebi" as ?database)
+  BIND("157592" as ?id)
+
+  ?interaction a <http://biomodels.net/SBO/SBO_0000344> .
+  BIND(?database + "_" + ?id as ?interactor)
+  FILTER CONTAINS (str(?interaction), ?interactor)
+
+  ?interaction ?predicate ?object
+
+  FILTER CONTAINS (str(?object), "http://rdf.glycoinfo.org/dbid/CHEBI/")
+
+  BIND(REPLACE(str(?object), "http://rdf.glycoinfo.org/dbid/CHEBI/", "", "i") AS ?chebi_id)
+  BIND(URI(CONCAT("http://rdf.glycoinfo.org/chebi/", ?chebi_id)) as ?chebi_uri)
+
+  SERVICE <https://ts.glycosmos.org/sparql> {
+    ?glytoucan_url glycan:has_resource_entry ?chebi_uri .
+  }
 }
 ```
 ### RESULTS
@@ -1017,87 +108,300 @@ WHERE {
 {
   "head": {
     "vars": [
-      "class"
+      "interaction",
+      "glytoucan_url",
+      "chebi_uri"
     ]
   },
   "results": {
     "bindings": [
       {
-        "class": {
+        "interaction": {
           "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/EUPATH_0000591"
+          "value": "http://rdf.glycoinfo.org/matrixdb.association:chebi_157592__chembl_CHEMBL228"
+        },
+        "glytoucan_url": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/glycan/G72701VD"
+        },
+        "chebi_uri": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/chebi/157592"
         }
       },
       {
-        "class": {
+        "interaction": {
           "type": "uri",
-          "value": "http://biomodels.net/SBO/SBO_0000344"
+          "value": "http://rdf.glycoinfo.org/matrixdb.association:chebi_157592__chembl_CHEMBL238"
+        },
+        "glytoucan_url": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/glycan/G72701VD"
+        },
+        "chebi_uri": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/chebi/157592"
+        }
+      }
+    ]
+  }
+}
+```
+</details>
+
+
+
+
+# query_psicquicdata_by_glytoucanid
+### SPARQL query
+```
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX chebi: <https://www.ebi.ac.uk/rdf/services/sparql>
+PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT ?glytoucan_uri ?interaction
+
+WHERE {
+
+  BIND("G72701VD" as ?glytoucan_id)
+
+  SERVICE <https://ts.glycosmos.org/sparql> {
+    ?glytoucan_uri dcterms:identifier ?glytoucan_id .
+    ?glytoucan_uri glycan:has_resource_entry ?glytoucan_chebi_uri .
+    FILTER CONTAINS (str(?glytoucan_chebi_uri), "http://rdf.glycoinfo.org/chebi/")
+  }
+  BIND(REPLACE(str(?glytoucan_chebi_uri), "http://rdf.glycoinfo.org/chebi/", "", "i") AS ?chebi_id)
+  BIND(URI(CONCAT("http://rdf.glycoinfo.org/dbid/CHEBI/", ?chebi_id)) as ?psicquic_chebi_uri)
+
+  ?interaction ?predicarte ?psicquic_chebi_uri
+}
+```
+### RESULTS
+<details>
+<summary>Toggle</summary>
+
+```
+{
+  "head": {
+    "vars": [
+      "glytoucan_uri",
+      "interaction"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "glytoucan_uri": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/glycan/G72701VD"
+        },
+        "interaction": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/matrixdb.association:chebi_157592__chembl_CHEMBL228"
         }
       },
       {
-        "class": {
+        "glytoucan_uri": {
           "type": "uri",
-          "value": "http://biomodels.net/SBO/SBO_0000241"
+          "value": "http://rdf.glycoinfo.org/glycan/G72701VD"
+        },
+        "interaction": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/matrixdb.association:chebi_157592__chembl_CHEMBL238"
+        }
+      }
+    ]
+  }
+}
+```
+</details>
+
+
+
+
+# query_psicquicinteractin_by_uniprotid
+### SPARQL query
+```
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX chebi: <https://www.ebi.ac.uk/rdf/services/sparql>
+PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX gco: <http://purl.jp/bio/12/glyco/conjugate#>
+
+SELECT ?interaction ?detectin_method ?publication_identifier ?interaction_type ?source_database ?interaction_id ?interactor_a ?interactor_b ?host ?glytoucan_uri
+
+WHERE {
+  BIND("P02649" as ?uniprot_id)
+
+  ?interaction a <http://biomodels.net/SBO/SBO_0000344> .
+  BIND(URI(CONCAT("http://rdf.glycoinfo.org/dbid/uniprot/", ?uniprot_id)) as ?psicquic_uniprot_id)
+  ?interaction ?predicate ?psicquic_uniprot_id .
+
+  ?interaction <http://www.bioassayontology.org/bao#BAO_0002875> ?detectin_method .
+  ?interaction <http://purl.obolibrary.org/obo/IAO_0000119> ?publication_identifier .
+  ?interaction <http://www.biopax.org/release/biopax-level3.owl#interactionType> ?interaction_type .
+  ?interaction dc:source ?source_database .
+  ?interaction dc:identifier ?interaction_id .
+  ?interaction <http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_A> ?interactor_a .
+  ?interaction <http://rdf.glycoinfo.org/PSICQUIC/Ontology#has_interactor_B> ?interactor_b .
+  ?interaction <http://semanticscience.org/resource/SIO_000253> ?host .
+
+  BIND(URI(CONCAT("http://purl.uniprot.org/uniprot/", ?uniprotid)) as ?glytoucan_uniprot_uri)
+  SERVICE <https://ts.glycosmos.org/sparql> {
+    ?glytoucan_uniprot_uri gco:glycosylated_at ?glycosylation_site .
+    ?glycosylation_site gco:has_saccharide ?glytoucan_uri .
+  }
+}
+```
+
+
+
+
+# uniprotid_psicquic_glytoucan
+### SPARQL query
+```
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX chebi: <https://www.ebi.ac.uk/rdf/services/sparql>
+PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX gco: <http://purl.jp/bio/12/glyco/conjugate#>
+
+SELECT ?uniprot_uri ?glytoucan_uri
+
+WHERE {
+  ?interaction a <http://biomodels.net/SBO/SBO_0000344> .
+  ?interaction ?p ?interactor .
+  ?interactor a <http://biomodels.net/SBO/SBO_0000241> .
+  FILTER CONTAINS (str(?interactor), "http://rdf.glycoinfo.org/dbid/uniprot")
+  BIND(REPLACE(str(?interoctor), "http://rdf.glycoinfo.org/dbid/uniprot/", "", "i") as ?uniprot_id)
+  BIND(URI(CONCAT("http://purl.uniprot.org/uniprot/", ?uniprot_id)) as ?uniprot_uri)
+
+  SERVICE <https://ts.glycosmos.org/sparql> {
+    ?uniprot_uri gco:glycosylated_at ?glycosylation_site .
+    ?glycosylation_site gco:has_saccharide ?glytoucan_uri .
+  }
+}
+limit 10
+```
+### RESULTS
+<details>
+<summary>Toggle</summary>
+
+```
+{
+  "head": {
+    "vars": [
+      "uniprot_uri",
+      "glytoucan_uri"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "uniprot_uri": {
+          "type": "uri",
+          "value": "http://purl.uniprot.org/uniprot/A0A0A6YWP4"
+        },
+        "glytoucan_uri": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/glycan/G20861AN"
         }
       },
       {
-        "class": {
+        "uniprot_uri": {
           "type": "uri",
-          "value": "http://purl.obolibrary.org/obo/NCIT_C93638"
+          "value": "http://purl.uniprot.org/uniprot/A0A0A6YWP4"
+        },
+        "glytoucan_uri": {
+          "type": "uri",
+          "value": "http://identifiers.org/glytoucan/G09724ZC"
         }
       },
       {
-        "class": {
+        "uniprot_uri": {
           "type": "uri",
-          "value": "http://rdf.glycoinfo.org/PSICQUIC/Ontology#InteractionId"
+          "value": "https://purl.org/glyconnect/protein/62"
+        },
+        "glytoucan_uri": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/glycan/G20861AN"
         }
       },
       {
-        "class": {
+        "uniprot_uri": {
           "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#Ontology"
+          "value": "https://purl.org/glyconnect/protein/62"
+        },
+        "glytoucan_uri": {
+          "type": "uri",
+          "value": "http://identifiers.org/glytoucan/G09724ZC"
         }
       },
       {
-        "class": {
+        "uniprot_uri": {
           "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#AnnotationProperty"
+          "value": "http://purl.uniprot.org/uniprot/A0A0A6YWP4"
+        },
+        "glytoucan_uri": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/glycan/G39448FX"
         }
       },
       {
-        "class": {
+        "uniprot_uri": {
           "type": "uri",
-          "value": "http://www.biopax.org/release/biopax-level3.owl#MolecularInteraction"
+          "value": "http://purl.uniprot.org/uniprot/A0A0A6YWP4"
+        },
+        "glytoucan_uri": {
+          "type": "uri",
+          "value": "http://identifiers.org/glytoucan/G66538GV"
         }
       },
       {
-        "class": {
+        "uniprot_uri": {
           "type": "uri",
-          "value": "http://rdf.glycoinfo.org/ontology/interaction#InteractionId"
+          "value": "https://purl.org/glyconnect/protein/62"
+        },
+        "glytoucan_uri": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/glycan/G39448FX"
         }
       },
       {
-        "class": {
+        "uniprot_uri": {
           "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#ObjectProperty"
+          "value": "https://purl.org/glyconnect/protein/62"
+        },
+        "glytoucan_uri": {
+          "type": "uri",
+          "value": "http://identifiers.org/glytoucan/G66538GV"
         }
       },
       {
-        "class": {
+        "uniprot_uri": {
           "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#Class"
+          "value": "http://purl.uniprot.org/uniprot/A0A0A6YWP4"
+        },
+        "glytoucan_uri": {
+          "type": "uri",
+          "value": "http://rdf.glycoinfo.org/glycan/G61514UE"
         }
       },
       {
-        "class": {
+        "uniprot_uri": {
           "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#Restriction"
-        }
-      },
-      {
-        "class": {
+          "value": "http://purl.uniprot.org/uniprot/A0A0A6YWP4"
+        },
+        "glytoucan_uri": {
           "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#NamedIndividual"
+          "value": "http://identifiers.org/glytoucan/G40702WU"
         }
       }
     ]

@@ -6,4 +6,5 @@ WHERE {
   ?class a owl:Class.
   OPTIONAL { ?class rdfs:label ?label}
   OPTIONAL { ?class rdfs:comment ?description}
+  FILTER CONTAINS (str(?class), "http")
 }

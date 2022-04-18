@@ -5,21 +5,25 @@ import re
 import shutil
 import sys
 
-sys.path.append('/Users/kouiti/localfile/glycovid_PSIQUIC')
+sys.path.append("/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC")
 from mylib import general_method as gm
 
 
-def toURI(text:str, prefix) -> str:
+def toURI(text: str, prefix) -> str:
     if text[0:1] == "<" and text[-1:] == ">":
+        return text
+    # escape blank node
+    elif text == "[]":
         return text
     else:
         for key in prefix:
-            if re.match(r"^"+key, text):
+            if re.match(r"^" + key, text):
                 text = text.replace(key, prefix[key][:-1], 1)
                 text += ">"
                 return text
     print("error: in toURI: ", text)
     sys.exit()
+
 
 def validate_uri(uri: str, uri_patterns: list, except_json: dict) -> bool:
     isCorrect = False
@@ -55,7 +59,7 @@ def validate_turtle(file: str, uri_pattern: list, except_json: dict) -> None:
                 continue
             if isRdf:
                 col = re.split(r"\s+", line)
-                if(col[-1] == ""):
+                if col[-1] == "":
                     col.pop(-1)
                 if col[-1][-1] == ",":
                     col[-1] = col[-1][0:-1]
@@ -69,24 +73,38 @@ def validate_turtle(file: str, uri_pattern: list, except_json: dict) -> None:
                     else:
                         uri = toURI(col[2], prefix)
                         validate_uri(uri, uri_pattern, except_json)
+                # has blank node
+                # example: ['', '[', 'a', 'ns5:SIO_000559', '],', '']
+                elif len(col) == 6:
+                    uri = toURI(col[3], prefix)
+                    validate_uri(uri, uri_pattern, except_json)
+                # example: ['', 'ns5:SIO_000253', '[', 'a', 'ns5:SIO_000559', ']', ',']
+                elif len(col) == 7:
+                    uri = toURI(col[4], prefix)
+                    validate_uri(uri, uri_pattern, except_json)
                 # po
                 elif len(col) == 3:
                     uri = toURI(col[1], prefix)
                 else:
                     uri = toURI(line[0], prefix)
 
+
 def get_except_json():
     return {
-            # r"<http://rdf.glycoinfo.org/dbid/taxonomy/-2>": 0,
-            # r"<http://rdf.glycoinfo.org/dbid/taxonomy/-1>": 0,
-            r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+#PRO_\d+>": 0,
-            r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+-\d+>": 0,
-            # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/pubmed\/unassigned\d+>": 0,
-            r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/rigid\/[A-Za-z0-9\+\/]+>": 0,
-            # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/reactome\/REACT_\d{4}\.\d>": 0,
-            # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/Missing-Uniprot-ID-for-[A-Z0-9]+>": 0,
-            # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/ensembl\/Missing-Ensembl-Gene-ID-for-[-@A-Z0-9]+>": 0
-            }
+        # r"<http://rdf.glycoinfo.org/dbid/taxonomy/-2>": 0,
+        # r"<http://rdf.glycoinfo.org/dbid/taxonomy/-1>": 0,
+        # r"<http://rdf.glycoinfo.org/dbid/taxonomy/-3>": 0,
+        r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+%23PRO_\d+>": 0,
+        r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/[A-Z0-9]+-\d+>": 0,
+        # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/pubmed\/unassigned\d+>": 0,
+        # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/rigid\/[A-Za-z0-9\+\/]+>": 0,
+        # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/reactome\/REACT_\d{4}\.\d>": 0,
+        # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/uniprot\/Missing-Uniprot-ID-for-[A-Z0-9]+>": 0,
+        # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/ensembl\/Missing-Ensembl-Gene-ID-for-[-@A-Z0-9]+>": 0,
+        # r"<http:\/\/rdf\.glycoinfo\.org\/dbid\/ensembl\/Missing-Ensembl-Gene-ID-for-[-@A-Z0-9]+>": 0,
+        r"\[\]": 0,
+    }
+
 
 def main():
     services_list = gm.list_serveice()
@@ -109,7 +127,13 @@ def main():
             f.write(service + ":\n")
         for except_regex in except_json:
             with open("turtle/errors.yaml", "a") as f:
-                f.write("\t" + except_regex.replace("\\/", "/") + ":\t" + str(except_json[except_regex]) + "\n")
+                f.write(
+                    "\t"
+                    + except_regex.replace("\\/", "/")
+                    + ":\t"
+                    + str(except_json[except_regex])
+                    + "\n"
+                )
 
 
 if __name__ == "__main__":

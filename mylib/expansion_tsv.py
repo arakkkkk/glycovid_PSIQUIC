@@ -6,10 +6,10 @@ import shutil
 import sys
 from copy import copy
 
+sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
+
 from mylib import general_method as gm
 from mylib.psiquic_class import PQdata, PQdataList
-
-sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
 
 
 def get_target_id(column_data: str, db_name: str):
@@ -75,7 +75,7 @@ def list2tsv(data: list):
 
 
 def except_columns(row):
-    except_list = [2, 3, 4, 5, 7, 10, 14]
+    except_list = [2, 3, 4, 5, 7, 14]
     for i in range(len(row)):
         if i in except_list:
             row[i] = ""
@@ -121,5 +121,5 @@ def expansion_tsv(dirname):
 
 
 if __name__ == "__main__":
-    dirname = "/Users/kouiti/localfile/glycovid_PSIQUIC/"
+    dirname = "/Users/kouiti/localfile/glycovid/glycovid_PSIQUIC/"
     expansion_tsv(dirname)
