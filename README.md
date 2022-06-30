@@ -19,15 +19,19 @@ python sparql/query.py
 [rdf contain](https://github.com/arakkkkk/glycovid_PSIQUIC/blob/main/sparql/out/out.md)<br>
 
 ### Description
-
+- query_all.py
+  - Query interaction datasets from PSICQUIC by REST API.
+  - Queried data saved in data/ directory.
+- create_ttl.py
+  - Create rdf files from queried data in data/ directroy.
 - mylib/general_method.py
-  - service list of psicquic
+  - Service list of psicquic
 - data/
-  - query results
+  - Query results
 - expdata/
-  - results of expantion tsvdata
+  - Results of expantion tsvdata
 - sparql/
-  - run sparql query in python
+  - Run sparql query in python
 
 # glycovid_PSICQUIC 仕様
 
